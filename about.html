@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Karla:wght@400;500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./assets/resume-data.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#17151a;font-family:'Karla',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#560591;text-decoration:none}
+a:hover{color:#17151a}
+::selection{background:#560591;color:#fff}
+@keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes cueBob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+@media (hover:hover) and (pointer:fine){body,body a,body button{cursor:none}}
+</style>
+</helmet>
+
+<div id="za-cursor" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;width:10px;height:10px;border-radius:999px;background:#560591;opacity:0;transition:width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),opacity .3s ease"></div>
+
+<header id="za-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
+  <a href="./index.html" aria-label="Shrida Sali — home" style="display:flex;align-items:center;gap:12px;color:#17151a" style-hover="color:#17151a">
+    <span style="display:flex;align-items:baseline;font:500 30px/1 'JetBrains Mono',monospace;letter-spacing:-.06em;color:#17151a"><span>s</span><span style="color:#560591">/</span><span>s</span><span style="width:.5em;height:.1em;background:#560591;margin-left:.08em;animation:caretBlink 1s step-end infinite"></span></span>
+    <span style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.26em;color:#17151a">SHRIDA SALI</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <nav style="display:flex;align-items:center;gap:26px;padding:11px 8px;font-family:'Montserrat',sans-serif">
+      <a href="./work.html" style="color:#17151a" style-hover="color:#560591">Work</a>
+      <a href="#top" style="color:#560591">About</a>
+      <a href="#contact" style="color:#17151a" style-hover="color:#560591">Contact</a>
+    </nav>
+    <a class="zx-resume" href="./assets/Shrida-Sali-Resume.pdf" target="_blank" rel="noopener" style="padding:12px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Resume</a>
+  </div>
+</header>
+
+<section id="top" data-screen-label="About hero" style="padding:clamp(120px,18vh,160px) 28px 80px">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,5vw,80px);align-items:end">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:26px;padding-bottom:8px">
+      <span data-r="" style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">
+        <span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Textiles → Product → Gen AI
+      </span>
+      <h1 style="margin:0;font:700 clamp(44px,6.4vw,104px)/.98 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#17151a">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">Empathy is</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">the whole</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block;color:#560591">method.</span></span>
+      </h1>
+      <p data-r="" data-d="2" style="margin:0;max-width:40ch;font:400 16px/1.55 'Karla',sans-serif;color:rgba(23,21,26,.78);text-wrap:pretty">I work on AI products for businesses, somewhere between the people who want them and the people who have to use them.</p>
+      <div data-r="" data-d="3" style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="mailto:shrida.sali96@gmail.com" style="padding:13px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Email me</a>
+        <span style="display:inline-flex;align-items:center;padding:13px 4px;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">2019 — 2026 · DUBAI, UAE</span>
+      </div>
+    </div>
+    <div id="za-shot" style="position:relative;aspect-ratio:4/5;width:min(100%,calc(74vh * .8),560px);justify-self:end;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)">
+      <image-slot id="za-portrait" src="./assets/portrait.png" shape="rect" placeholder="Portrait" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="The thread" style="padding:80px 28px">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+    <div style="align-self:start;position:sticky;top:120px;display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">THE THREAD</div>
+      <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">From artisans to agents.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px;max-width:60ch;grid-column:span 2">
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">I started my career as a textile designer, working alongside artisans and found myself empathising with them as they losing their business to cheaper alternatives. This was the first real world problem I cared about solving.</p>
+      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Trying to solve this problem pushed me towards a masters in Design Management, and then into product.</p>
+      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Somewhere along the way into product design, I stumbled into AI and haven't looked back since.</p>
+      <div data-r="" data-d="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px">
+        <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div class="za-num" data-to="3" style="font:700 clamp(36px,4vw,60px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591">0</div><div style="font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:rgba(23,21,26,.6)">YEARS SHIPPING AI NATIVE PRODUCTS</div></div>
+        <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div class="za-num" data-to="4" data-pad="2" style="font:700 clamp(36px,4vw,60px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591">0</div><div style="font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:rgba(23,21,26,.6)">CASE STUDIES</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="What I believe" style="padding:40px 28px">
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,88px);border-radius:20px;background:#17151a;color:#fff;display:flex;flex-direction:column;gap:26px">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.6)">WHAT I BELIEVE</div>
+    <p data-r="" data-d="1" style="margin:0;font:700 clamp(28px,4.4vw,68px)/1.06 'Bricolage Grotesque',sans-serif;letter-spacing:-.035em;max-width:24ch;text-wrap:pretty">[Your lens, one or two sentences, set at display size. The same insight component the case studies use. Placeholder.]</p>
+  </div>
+</section>
+
+<section data-screen-label="Now" style="padding:120px 28px 60px">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+    <div style="align-self:start;display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">NOW</div>
+      <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">What I'm working on.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:60ch;grid-column:span 2">
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[What you are working on and what you are looking for next. Placeholder.]</p>
+      <div data-r="" data-d="1" style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:10px 16px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif">GenAI</span>
+        <span style="padding:10px 16px;border-radius:12px;border:1px solid rgba(23,21,26,.16);color:#17151a;font:600 13px/1 'Karla',sans-serif">Agentic AI</span>
+        <span style="padding:10px 16px;border-radius:12px;border:1px solid rgba(23,21,26,.16);color:#17151a;font:600 13px/1 'Karla',sans-serif">Data</span>
+        <span style="padding:10px 16px;border-radius:12px;border:1px solid rgba(23,21,26,.16);color:#17151a;font:600 13px/1 'Karla',sans-serif">Service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Outside work" style="padding:60px 28px 140px">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+    <div style="align-self:start;display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">OUTSIDE WORK</div>
+      <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">Away from the screen.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:60ch;grid-column:span 2">
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">When I am not brainstorming or designing, I am either cooking exotic food, looking at luxury homes or planning my next trip with a cup of tea in my hand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="position:relative;background:#560591;color:#fff;padding:130px 34px 40px;overflow:hidden">
+  <div style="max-width:1400px;margin:0 auto">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:rgba(255,255,255,.68)">NEXT</div>
+    <h2 data-r="" data-d="1" style="margin:26px 0 0;font:600 clamp(32px,5.4vw,84px)/1.04 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:26ch">Let's <span class="zx-verb" style="display:inline-grid;vertical-align:baseline;overflow:hidden"><span style="grid-area:1/1;visibility:hidden">design</span></span><br>incredible products together</h2>
+    <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:52px">
+      <a href="mailto:shrida.sali96@gmail.com" style="padding:16px 28px;border-radius:999px;background:#fff;color:#2E0250;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="background:#faf9fb;color:#2E0250">Email me</a>
+      <a href="https://www.linkedin.com/in/shrida-s-2ab60ab5/" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">LinkedIn</a>
+      <a href="https://www.behance.net/shridasali96" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Behance</a><a href="https://dribbble.com/salishrida" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Dribbble</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;margin-top:110px;padding-top:26px;border-top:1px solid rgba(255,255,255,.28);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,255,255,.7)">
+      <span>SHRIDA SALI — PORTFOLIO 2026</span><span>DUBAI, UAE · GMT+4</span>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    const q = (s) => Array.from(document.querySelectorAll(s));
+
+    q('.zx-resume').forEach((a) => a.addEventListener('click', (e) => {
+      if (!window.__openResume) return;
+      e.preventDefault(); window.__openResume();
+    }));
+
+    q('.zx-verb').forEach((host) => {
+      if (host.dataset.wired) return;
+      host.dataset.wired = '1';
+      const words = ['dream', 'design', 'build'];
+      const sizer = host.firstElementChild;
+      sizer.setAttribute('aria-hidden', 'true');
+      sizer.style.whiteSpace = 'nowrap';
+      const measure = (w) => { sizer.textContent = w; return sizer.getBoundingClientRect().width; };
+      host.style.transition = 'width 1.1s cubic-bezier(.4,0,.2,1) .12s';
+      let live = document.createElement('span');
+      live.textContent = words[0];
+      live.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap';
+      host.appendChild(live);
+      host.style.width = measure(words[0]) + 'px';
+      if (reduce) return;
+      let wi = 0;
+      this._verbTimer = setInterval(() => {
+        wi = (wi + 1) % words.length;
+        const next = document.createElement('span');
+        next.textContent = words[wi];
+        next.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap;transform:translateY(105%);opacity:0;transition:transform .9s ' + ease + ', opacity .65s ease';
+        host.appendChild(next);
+        const out = live;
+        host.style.width = measure(words[wi]) + 'px';
+        requestAnimationFrame(() => {
+          next.style.transform = 'none'; next.style.opacity = '1';
+          out.style.transition = 'transform .9s ' + ease + ', opacity .65s ease';
+          out.style.transform = 'translateY(-105%)'; out.style.opacity = '0';
+        });
+        live = next;
+        setTimeout(() => out.remove(), 1100);
+      }, 3400);
+    });
+
+    // headline lines rise, portrait pops in
+    q('.za-line').forEach((el, i) => {
+      if (reduce) return;
+      el.style.transform = 'translateY(105%)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.transition = 'transform 1.05s ' + ease + ' ' + (0.15 + i * 0.11) + 's';
+        el.style.transform = 'none';
+      }));
+    });
+    const shot = document.getElementById('za-shot');
+    if (shot && !reduce) {
+      shot.style.opacity = '0';
+      shot.style.transform = 'translateY(60px) scale(.94)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        shot.style.transition = 'opacity .7s ease .35s, transform 1.1s cubic-bezier(.34,1.5,.55,1) .35s';
+        shot.style.opacity = '1';
+        shot.style.transform = 'none';
+      }));
+    }
+
+    const items = q('[data-r]');
+    if (!reduce) items.forEach((el) => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; });
+    const pending = new Set(reduce ? [] : items);
+    const reveal = (el) => {
+      if (!pending.has(el)) return;
+      pending.delete(el);
+      const d = parseFloat(el.getAttribute('data-d') || '0') * 0.09;
+      el.style.transition = 'opacity .8s ' + ease + ' ' + d + 's, transform .9s ' + ease + ' ' + d + 's';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    const runNum = (el) => {
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const to = parseInt(el.dataset.to, 10) || 0;
+      const pad = parseInt(el.dataset.pad, 10) || 0;
+      const fmt = (v) => (pad ? String(v).padStart(pad, '0') : String(v));
+      if (reduce) { el.textContent = fmt(to); return; }
+      const t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / 900);
+        el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const sweep = () => {
+      const h = innerHeight;
+      Array.from(pending).forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < h * 0.92 && r.bottom > 0) reveal(el); });
+      q('.za-num').forEach((el) => { if (el.dataset.counted) return; const r = el.getBoundingClientRect(); if (r.top < h * 0.86 && r.bottom > 0) runNum(el); });
+    };
+    const head = document.getElementById('za-head');
+    const onScroll = () => {
+      if (head) head.style.padding = scrollY > 40 ? '13px 28px' : '22px 28px';
+      sweep();
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', sweep);
+    onScroll();
+    setTimeout(() => { Array.from(pending).forEach(reveal); q('.za-num').forEach(runNum); }, 3000);
+
+    this.initCursor();
+  }
+
+  initCursor() {
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const cur = document.getElementById('za-cursor');
+    if (!cur) return;
+    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cur.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
+    document.addEventListener('mouseover', (e) => {
+      const w = e.target.closest && e.target.closest('a,button') ? 30 : 10;
+      cur.style.width = w + 'px'; cur.style.height = w + 'px';
+    });
+    const loop = () => {
+      cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
+      cur.style.transform = 'translate(' + (cx - cur.offsetWidth / 2) + 'px,' + (cy - cur.offsetHeight / 2) + 'px)';
+      this._raf = requestAnimationFrame(loop);
+    };
+    this._raf = requestAnimationFrame(loop);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._verbTimer);
+    cancelAnimationFrame(this._raf);
+  }
+}
+</script>
+</body>
+</html>

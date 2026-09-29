@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Work+Sans:wght@400;500;600&amp;family=Archivo:wght@400;500;600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=Montserrat:wght@400;500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&amp;family=Instrument+Serif:ital@0;1&amp;family=Syne:wght@400;600;700;800&amp;family=Cabin:wght@400;500;600;700&amp;family=Merriweather:wght@400;700;900&amp;family=Playfair+Display:wght@400;600;700&amp;family=Cormorant+Garamond:wght@500;600;700&amp;family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&amp;family=Crimson+Text:wght@400;600;700&amp;family=DM+Serif+Display&amp;family=Libre+Baskerville:wght@400;700&amp;family=EB+Garamond:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./assets/resume-data.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#faf9fb;color:#17151a;font-family:'Karla','Karla','Montserrat',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#560591;text-decoration:none}
+a:hover{color:#17151a}
+::selection{background:#560591;color:#fff}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes cueBob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+@keyframes zpType{to{opacity:1}}
+@keyframes curtainUp{to{transform:translateY(-101%)}}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none}
+  body a,body button,body .zp-tile{cursor:none}
+}
+.zp-tile{transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1),border-color .35s ease}
+.zp-tile:hover .zp-rowtitle{transform:translateX(10px);color:var(--p-deep,#560591)}
+.zp-rowtitle{transition:transform .5s cubic-bezier(.22,1,.36,1),color .3s ease}
+.zp-tile .zp-rule{transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.zp-tile:hover .zp-rule{transform:scaleX(1)}
+.zp-tile image-slot{transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.zp-tile:hover image-slot{transform:scale(1.035)}
+.zp-tile h3{transition:color .3s ease}
+.zp-tile:hover h3{color:var(--p-deep,#560591)}
+.zp-arrow{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.zp-tile:hover .zp-arrow{transform:translateX(7px)}
+#zp-head nav a{position:relative;transition:color .25s ease}
+#zp-head nav a:not(#zp-resume)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--p-deep,#560591);transform:scaleX(0);transform-origin:right center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#zp-head nav a:not(#zp-resume):hover::after{transform:scaleX(1);transform-origin:left center}
+#zp-head nav a:not(#zp-resume):hover{color:#17151a}
+@keyframes zpSlat{to{transform:translateY(-101%)}}
+@keyframes zpLetter{from{transform:translateY(105%)}to{transform:translateY(0)}}
+@keyframes zpCycle{0%,18%{transform:translateY(0)}25%,43%{transform:translateY(-25%)}50%,68%{transform:translateY(-50%)}75%,100%{transform:translateY(-75%)}}
+@keyframes zpOut{to{opacity:0}}
+@keyframes zpHide{to{opacity:0;visibility:hidden}}
+</style>
+</helmet>
+
+<div id="zp-cursor" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;width:10px;height:10px;border-radius:999px;background:var(--p-deep,#560591);display:flex;align-items:center;justify-content:center;opacity:0;transition:width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),background .3s ease,opacity .3s ease;mix-blend-mode:normal">
+  <span id="zp-cursor-label" style="font:600 10px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;color:#fff;opacity:0;transition:opacity .22s ease;white-space:nowrap">READ</span>
+</div>
+
+<div id="zp-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
+
+<div id="zp-splash" style="position:fixed;inset:0;z-index:80;background:#ffffff;color:#17151a;display:flex;flex-direction:column;justify-content:space-between;padding:28px;animation:curtainUp .95s cubic-bezier(.76,0,.24,1) 2.1s forwards;overflow:hidden;pointer-events:none">
+  <div style="display:flex;justify-content:space-between;gap:20px;font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:rgba(23,21,26,.55);animation:riseIn .6s ease .1s both">
+    <span>PORTFOLIO — 2026</span><span>DUBAI, UAE · GMT+4</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:26px">
+    <div style="display:flex;align-items:baseline;font:500 clamp(88px,15vw,200px)/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.06em">
+      <span style="display:inline-block;opacity:0;animation:zpType .01s linear 0.35s forwards">s</span><span style="display:inline-block;color:#560591;opacity:0;animation:zpType .01s linear 0.6s forwards">/</span><span style="display:inline-block;opacity:0;animation:zpType .01s linear 0.85s forwards">s</span><span style="width:.5em;height:.1em;background:#560591;margin-left:.08em;animation:caretBlink .8s step-end infinite"></span>
+    </div>
+    <div style="font:500 12px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.42em;color:#17151a;padding-left:.42em;animation:riseIn .7s cubic-bezier(.22,1,.36,1) 1.05s both">SHRIDA SALI</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="height:2px;background:rgba(23,21,26,.08);border-radius:2px;overflow:hidden"><div style="height:100%;background:#560591;transform-origin:left center;animation:growX 1.8s cubic-bezier(.65,0,.35,1) .2s both"></div></div>
+    <div style="display:flex;justify-content:space-between;gap:20px;font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;color:rgba(23,21,26,.55);animation:riseIn .6s ease .5s both">
+      <span>PRODUCT DESIGNER · AI NATIVE PRODUCTS</span><span>04 CASE STUDIES</span>
+    </div>
+  </div>
+</div>
+
+<section id="top" style="position:relative;height:100svh;min-height:460px;background:#ffffff">
+  <div style="position:relative;height:100%;overflow:hidden;background:#ffffff">
+    <div id="zp-shot2" style="position:absolute;inset:0">
+      <img src="./assets/portrait-shrida.png" alt="Shrida Sali" style="position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);display:block;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%)">
+    </div>
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(to top,#fff 0%,rgba(255,255,255,.92) 30%,rgba(255,255,255,.55) 62%,rgba(255,255,255,0) 100%);pointer-events:none"></div>
+
+    <header style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;font:500 14px/1 var(--zb,'Karla'),sans-serif">
+      <a href="#top" aria-label="Shrida Sali — home" style="position:relative;display:flex;align-items:center;color:#17151a;text-shadow:0 0 18px rgba(255,255,255,.9)" style-hover="color:#17151a">
+      <span data-logo="Prompt" style="display:none;align-items:center;gap:12px">
+        <span style="display:flex;align-items:baseline;font:500 30px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.06em;color:#17151a"><span>s</span><span style="color:#560591">/</span><span>s</span><span id="zp-logo-caret" style="width:.5em;height:.1em;background:#560591;margin-left:.08em;animation:caretBlink 1s step-end infinite"></span></span>
+        <span style="font:500 10px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.26em;color:#17151a">SHRIDA SALI</span>
+      </span>
+      <span data-logo="Stacked" style="display:none;flex-direction:column;font:700 21px/.86 'Bricolage Grotesque',sans-serif;letter-spacing:-.045em;color:#17151a">
+        <span><span style="color:#560591">s</span>hrida</span><span><span style="color:#560591">s</span>ali<span style="color:#560591">.</span></span>
+      </span>
+      <span data-logo="Monogram" style="display:flex;align-items:center;gap:12px;color:#17151a;text-shadow:0 0 18px rgba(255,255,255,.9)" style-hover="color:#17151a">
+        <span style="display:flex;align-items:baseline;font:italic 400 46px/.8 'Instrument Serif',serif;letter-spacing:0">
+          <span>S</span><span style="margin-left:-.3em;color:#560591;transform:translateY(.12em);display:inline-block">S</span><span style="width:7px;height:7px;border-radius:50%;background:#560591;margin-left:3px;display:inline-block"></span>
+        </span>
+        <span style="display:flex;flex-direction:column;gap:4px;padding-left:12px;border-left:1px solid rgba(23,21,26,.35);font:500 10px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.2em">
+          <span>SHRIDA</span><span>SALI</span>
+        </span>
+      </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:12px"><nav style="display:flex;align-items:center;gap:26px;padding:11px 8px;font-family:'Montserrat',sans-serif;text-shadow:0 0 16px rgba(255,255,255,.9)">
+        <a href="./work.html" style="color:#17151a" style-hover="color:#560591">Work</a>
+        <a href="./about.html" style="color:#17151a" style-hover="color:#560591">About</a>
+        <a href="#contact" style="color:#17151a" style-hover="color:#560591">Contact</a>
+      </nav>
+      <a id="zp-resume" href="./assets/Shrida-Sali-Resume.pdf" target="_blank" rel="noopener" style="padding:12px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 var(--zb,'Karla'),sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Resume</a></div>
+    </header>
+
+    <div id="zp-hero" style="position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 32px;padding:0 28px 30px;will-change:transform,opacity">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:min(100%,640px)">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 1px 3px rgba(23,21,26,.1);color:rgba(23,21,26,.7);font:500 13px/1 var(--zb,'Karla'),sans-serif">
+          <span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;animation:cueBob 2s ease-in-out infinite"></span>Open to work · Dubai, UAE
+        </span>
+        <h1 id="zp-h1" style="margin:0;font:var(--zw,500) clamp(28px,min(3.6vw,7.2vh),56px)/1.04 var(--zd,'Montserrat'),sans-serif;letter-spacing:var(--zls,-.035em);color:#17151a">
+          <span style="display:block;min-height:1em;white-space:nowrap">Designing</span>
+          <span style="display:block;min-height:1em;white-space:nowrap">AI powered</span>
+          <span style="display:block;min-height:1em;white-space:nowrap;color:var(--p-deep,#560591)">experiences.</span>
+        </h1>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:34ch">
+        <p style="margin:0;font:400 16px/1.55 var(--zb,'Karla'),sans-serif;color:rgba(23,21,26,.78);text-wrap:pretty">UX for AI that actually gets used. I close the gap between what AI can do and what people use. Three years of agents, copilots and the messy operations underneath them.</p>
+        <a href="mailto:shrida.sali96@gmail.com" style="padding:13px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 var(--zb,'Karla'),sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Email me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="border-top: 1px solid rgba(23,21,26,.12); border-bottom: 1px solid rgba(23,21,26,.12); overflow: hidden; padding: 26px 0; background: #F3ECFA">
+  <div style="display:flex;width:max-content;animation:marquee 26s linear infinite">
+    <div style="display:flex;gap:52px;padding-right:52px;font:var(--zw,600) clamp(15px,2vw,26px)/1 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.02em;color:rgba(23,21,26,.4);white-space:nowrap">
+      <span>Gen AI</span><span style="color:#560591">Agents</span><span>Copilots</span><span>Hyper-Personalisation</span><span style="color:#560591">Enterprise UX</span><span>User Flows</span><span>AI Failure States</span><span>Design Systems</span>
+    </div>
+    <div style="display:flex;gap:52px;padding-right:52px;font:var(--zw,600) clamp(15px,2vw,26px)/1 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.02em;color:rgba(23,21,26,.4);white-space:nowrap">
+      <span>Gen AI</span><span style="color:#560591">Agents</span><span>Copilots</span><span>Hyper-Personalisation</span><span style="color:#560591">Enterprise UX</span><span>Design Systems</span>
+    </div>
+  </div>
+</div>
+
+
+
+<section id="work" style="padding:96px 34px 40px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:22px;padding-bottom:30px">
+    <div data-r="" style="display:flex;flex-direction:column;gap:18px">
+      <div style="font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:var(--p-deep,#560591)">WORK</div>
+      <h2 style="margin:0;font:var(--zw,500) clamp(30px,5vw,78px)/.98 var(--zd,'Montserrat'),sans-serif;letter-spacing:var(--zls,-.045em)">Selected work</h2>
+    </div>
+    <div data-r="" data-d="1" style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;color:rgba(23,21,26,.42)">
+      <span>AN INDEX — 2023 TO 2025</span><span>04 CASE STUDIES</span>
+    </div>
+  </div>
+
+  <div id="zp-worklist" style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;padding-top:20px;padding-bottom:40px">
+
+  <div id="zp-stack" style="position:relative;height:400svh">
+  <div id="zp-stage" style="position:sticky;top:0;height:100svh;overflow:hidden">
+  <a href="./case-study-01.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+    <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
+      <img src="./assets/case01-cover-phones.jpg" alt="Ops Buddy app screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">01</div>
+      <div class="zp-ov" style="position:absolute;right:0;top:0;padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em">FEATURED · 2024</div>
+      <div style="position:absolute;left:0;bottom:0;right:0;display:flex;gap:1px;flex-wrap:wrap">
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Gen AI</span>
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">QSR operations</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(20px,3vw,44px);align-items:end;padding-bottom:26px;flex:0 0 auto">
+      <h3 class="zp-rowtitle" style="margin:0;font:600 clamp(24px,2.7vw,40px)/1.07 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:22ch">Cutting engineering tickets 22% across a 40-store pilot</h3>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;max-width:48ch;font:400 15px/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.62)">Leveraging Gen AI to help a quick service restaurant client reduce engineering tickets by 22% by providing step by step troubleshooting guidance to store managers in real time.</p>
+        <span class="zp-go" style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--zb,'Karla'),'Montserrat',sans-serif;color:var(--p-deep,#2E0250)">Read the case<span class="zp-arrow">→</span></span>
+      </div>
+    </div>
+  </a>
+
+  <a href="./case-study-02.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+    <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
+      <image-slot id="zp-case-2" shape="rect" placeholder="Case 02 hero — product screen" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">02</div>
+      <div class="zp-ov" style="position:absolute;right:0;top:0;padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em">2025</div>
+      <div style="position:absolute;left:0;bottom:0;right:0;display:flex;gap:1px;flex-wrap:wrap">
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Hyper-personalisation</span>
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Luxury retail</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(20px,3vw,44px);align-items:end;padding-bottom:26px;flex:0 0 auto">
+      <h3 class="zp-rowtitle" style="margin:0;font:600 clamp(24px,2.7vw,40px)/1.07 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:22ch">Reducing product discovery page drop off by 10% across a 500 customer pilot</h3>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;max-width:48ch;font:400 15px/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.62)">Leveraging Gen AI to help a luxury fashion brand enhance their customer experience through hyper-personalised experience, reducing product discovery drop off rate by 10%.</p>
+        <span class="zp-go" style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--zb,'Karla'),'Montserrat',sans-serif;color:var(--p-deep,#2E0250)">Read the case<span class="zp-arrow">→</span></span>
+      </div>
+    </div>
+  </a>
+
+  <a href="./case-study-03.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+    <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
+      <image-slot id="zp-case-3" shape="rect" placeholder="Case 03 hero — product screen" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">03</div>
+      <div class="zp-ov" style="position:absolute;right:0;top:0;padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em">2025</div>
+      <div style="position:absolute;left:0;bottom:0;right:0;display:flex;gap:1px;flex-wrap:wrap">
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Dashboard</span>
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Gen AI</span>
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">AI first design</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(20px,3vw,44px);align-items:end;padding-bottom:26px;flex:0 0 auto">
+      <h3 class="zp-rowtitle" style="margin:0;font:600 clamp(24px,2.7vw,40px)/1.07 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:22ch">Making Biodiversity Net Gain Legible</h3>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;max-width:48ch;font:400 15px/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.62)">A monitoring platform that turns messy ecological survey data into trustworthy insights on habitat health.</p>
+        <span class="zp-go" style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--zb,'Karla'),'Montserrat',sans-serif;color:var(--p-deep,#2E0250)">Read the case<span class="zp-arrow">→</span></span>
+      </div>
+    </div>
+  </a>
+
+  <a href="./case-study-04.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+    <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
+      <image-slot id="zp-case-4" shape="rect" placeholder="Case 04 hero — product screen" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">04</div>
+      <div class="zp-ov" style="position:absolute;right:0;top:0;padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em">2023</div>
+      <div style="position:absolute;left:0;bottom:0;right:0;display:flex;gap:1px;flex-wrap:wrap">
+        <span class="zp-ov" style="padding:12px 17px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Social innovation</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(20px,3vw,44px);align-items:end;padding-bottom:26px;flex:0 0 auto">
+      <h3 class="zp-rowtitle" style="margin:0;font:600 clamp(24px,2.7vw,40px)/1.07 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:22ch">Potential 30% improvement in farmer income</h3>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;max-width:48ch;font:400 15px/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.62)">Reimagining the post harvest agriculture supply chain ecosystem to open up multiple markets for farmers - projected to improve farmer income by 30%.</p>
+        <span class="zp-go" style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--zb,'Karla'),'Montserrat',sans-serif;color:var(--p-deep,#2E0250)">Read the case<span class="zp-arrow">→</span></span>
+      </div>
+    </div>
+  </a>
+
+  </div>
+  </div>
+    <a href="./work.html" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:36px 4px;border-top:1px solid rgba(23,21,26,.12);border-bottom:1px solid rgba(23,21,26,.12);color:inherit" style-hover="background:rgba(86,5,145,.04);color:inherit">
+      <span style="font:600 clamp(18px,2vw,28px)/1.14 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.03em">See the full work index</span>
+      <span style="font:400 22px/1 var(--zb,'Karla'),'Montserrat',sans-serif;color:var(--p-deep,#2E0250)">→</span>
+    </a>
+  </div>
+</section>
+
+<section id="about" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:60px;padding:140px 34px 120px;max-width:1400px;margin:0 auto">
+  <div style="align-self:start;position:sticky;top:120px">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:rgba(23,21,26,.42);margin-bottom:18px">HOW I THINK</div>
+    <div data-r="" data-d="1" style="font:var(--zw,600) clamp(24px,2.6vw,38px)/1.18 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.03em;max-width:16ch">Designing experiences that solve real problems.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:30px;max-width:64ch">
+    <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.78)">I have spent ~3 years designing Gen AI products that help businesses achieve their goals by starting from what their users actually want. With the AI buzz, most clients arrive ready to deploy agents and copilots across their operations. I work backwards from that ask to find the core challenge underneath it, and design from there.</p>
+    <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.78)">I'm usually the only designer across several engagements at once, forcing me to work in patterns. It also means I show work early, because a rough flow someone can argue with beats a polished one nobody questions.</p>
+    <p data-r="" data-d="2" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.62 var(--zb,'Karla'),'Montserrat',sans-serif;color:rgba(23,21,26,.78)">A screen works when nobody notices it. That's what I design for, on mobile or web. The work is never really about the AI. It's about the person on the other side of it.</p>
+    <div data-r="" data-d="3" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:14px;padding-top:34px;border-top:1px solid rgba(23,21,26,.12)">
+      <div><div class="zp-num" data-to="3" style="font:var(--zw,600) clamp(30px,3.4vw,50px)/1 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.03em;color:var(--p-deep,#560591)">0</div><div style="font:500 10px/1.5 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:rgba(23,21,26,.5);margin-top:10px">YEARS SHIPPING AI NATIVE PRODUCTS</div></div>
+      <div><div class="zp-num" data-to="4" data-pad="2" style="font:var(--zw,600) clamp(30px,3.4vw,50px)/1 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.03em;color:var(--p-deep,#560591)">0</div><div style="font:500 10px/1.5 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:rgba(23,21,26,.5);margin-top:10px">CASE STUDIES</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="position:relative;background:#560591;color:#fff;padding:130px 34px 40px;overflow:hidden">
+  <div style="max-width:1400px;margin:0 auto">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:rgba(255,255,255,.68)">NEXT</div>
+    <h2 data-r="" data-d="1" style="margin:26px 0 0;font:600 clamp(32px,5.4vw,84px)/1.04 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:26ch">Let's <span class="zx-verb" style="display:inline-grid;vertical-align:baseline;overflow:hidden"><span style="grid-area:1/1;visibility:hidden">design</span></span><br>incredible products together</h2>
+    <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:52px">
+      <a href="mailto:shrida.sali96@gmail.com" style="padding:16px 28px;border-radius:999px;background:#fff;color:#2E0250;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="background:#faf9fb;color:#2E0250">Email me</a>
+      <a href="https://www.linkedin.com/in/shrida-s-2ab60ab5/" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">LinkedIn</a>
+      <a href="https://www.behance.net/shridasali96" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Behance</a><a href="https://dribbble.com/salishrida" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Dribbble</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;margin-top:110px;padding-top:26px;border-top:1px solid rgba(255,255,255,.28);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,255,255,.7)">
+      <span>SHRIDA SALI — PORTFOLIO 2026</span><span>DUBAI, UAE · GMT+4</span>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;caseNumberStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Filled&quot;,&quot;Outlined&quot;,&quot;Muted&quot;],&quot;default&quot;:&quot;Filled&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Palette&quot;},&quot;caseNumberColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#FFFFFF&quot;,&quot;#560591&quot;,&quot;#B8452A&quot;,&quot;#2E8C86&quot;],&quot;default&quot;:&quot;#FFFFFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Palette&quot;},&quot;headlineFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bricolage Grotesque&quot;,&quot;Instrument Serif&quot;,&quot;Syne&quot;,&quot;Montserrat&quot;,&quot;Cabin&quot;,&quot;Merriweather&quot;,&quot;Playfair Display&quot;,&quot;Cormorant Garamond&quot;,&quot;Bodoni Moda&quot;,&quot;Crimson Text&quot;,&quot;DM Serif Display&quot;,&quot;Libre Baskerville&quot;,&quot;EB Garamond&quot;],&quot;default&quot;:&quot;Bricolage Grotesque&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Typeface&quot;},&quot;bodyFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Karla&quot;,&quot;Space Grotesk&quot;,&quot;Work Sans&quot;,&quot;Archivo&quot;,&quot;DM Sans&quot;,&quot;Montserrat&quot;],&quot;default&quot;:&quot;Karla&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Typeface&quot;},&quot;heroType&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ghost outline&quot;,&quot;All lines at once&quot;,&quot;Grow into place&quot;],&quot;default&quot;:&quot;Ghost outline&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;purpleDeep&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#2E0250&quot;,&quot;#3D0668&quot;,&quot;#1E0136&quot;,&quot;#560591&quot;],&quot;default&quot;:&quot;#2E0250&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Palette&quot;},&quot;purpleTint&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#F3ECFA&quot;,&quot;#EFE4FB&quot;,&quot;#F7F2FC&quot;,&quot;#f4eefc&quot;],&quot;default&quot;:&quot;#F3ECFA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Palette&quot;},&quot;overlayStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Frosted light&quot;,&quot;Frosted dark&quot;,&quot;Solid purple&quot;,&quot;Hairline&quot;,&quot;No box&quot;],&quot;default&quot;:&quot;Frosted dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Case cards&quot;},&quot;overlayRounded&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case cards&quot;},&quot;caseStacking&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case cards&quot;},&quot;cardRadius&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:40,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;default&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cases&quot;},&quot;logoStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Monogram&quot;,&quot;Prompt&quot;,&quot;Stacked&quot;],&quot;default&quot;:&quot;Prompt&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Logo&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    // contact footer: only the verb swaps, the rest of the sentence stays put
+    document.querySelectorAll('.zx-verb').forEach((host) => {
+      if (host.dataset.wired) return;
+      host.dataset.wired = '1';
+      const soft = 'cubic-bezier(.4,0,.2,1)';
+      const roll = 'cubic-bezier(.22,1,.36,1)';
+      const words = ['dream', 'design', 'build'];
+      const quiet = matchMedia('(prefers-reduced-motion:reduce)').matches;
+      const sizer = host.firstElementChild;
+      sizer.setAttribute('aria-hidden', 'true');
+      sizer.style.justifySelf = 'start';
+      sizer.style.whiteSpace = 'nowrap';
+      host.style.transition = 'width 1.15s ' + soft + ' .12s';
+      const measure = (w) => {
+        sizer.textContent = w;
+        const prev = host.style.width;
+        host.style.width = 'auto';
+        const nat = sizer.getBoundingClientRect().width;
+        host.style.width = prev;
+        return nat;
+      };
+      const DAMP = 0.82;
+      let maxNat = 0;
+      const slotWidth = (w) => {
+        const nat = measure(w);
+        if (!maxNat) maxNat = Math.max.apply(null, words.map(measure));
+        return Math.max(nat, nat + (maxNat - nat) * (1 - DAMP));
+      };
+      const setSlot = (w, animate) => {
+        if (!animate) host.style.transition = 'none';
+        host.style.width = slotWidth(w) + 'px';
+        if (!animate) requestAnimationFrame(() => { host.style.transition = 'width 1.15s ' + soft + ' .12s'; });
+      };
+      let live = document.createElement('span');
+      live.textContent = words[0];
+      live.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap;justify-self:start';
+      host.appendChild(live);
+      setSlot(words[0], false);
+      window.addEventListener('resize', () => { maxNat = 0; setSlot(live.textContent, false); });
+      if (quiet) return;
+      let wi = 0;
+      this._verbTimer = setInterval(() => {
+        wi = (wi + 1) % words.length;
+        const word = words[wi];
+        const next = document.createElement('span');
+        next.textContent = word;
+        next.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap;justify-self:start;transform:translateY(105%);opacity:0;transition:transform .9s ' + roll + ', opacity .65s ease';
+        host.appendChild(next);
+        const out = live;
+        out.setAttribute('aria-hidden', 'true');
+        setSlot(word, true);
+        requestAnimationFrame(() => {
+          next.style.transform = 'translateY(0)';
+          next.style.opacity = '1';
+          out.style.transition = 'transform .9s ' + roll + ', opacity .65s ease';
+          out.style.transform = 'translateY(-105%)';
+          out.style.opacity = '0';
+        });
+        live = next;
+        setTimeout(() => out.remove(), 1100);
+      }, 3400);
+    });
+
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+
+    // scroll-reveal
+    const items = Array.from(document.querySelectorAll('[data-r]'));
+    items.forEach((el) => {
+      if (reduce) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.willChange = 'opacity,transform';
+    });
+    const pending = new Set(reduce ? [] : items);
+    const reveal = (el) => {
+      if (!pending.has(el)) return;
+      pending.delete(el);
+      const d = parseFloat(el.getAttribute('data-d') || '0') * 0.09;
+      el.style.transition = 'opacity .8s ' + ease + ' ' + d + 's, transform .9s ' + ease + ' ' + d + 's';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+
+    // count-up
+    const runNum = (el) => {
+      if (el.getAttribute('data-counted')) return;
+      el.setAttribute('data-counted', '1');
+      const to = parseInt(el.getAttribute('data-to'), 10) || 0;
+      const pad = parseInt(el.getAttribute('data-pad'), 10) || 0;
+      const fmt = (v) => (pad ? String(v).padStart(pad, '0') : String(v));
+      if (reduce) { el.textContent = fmt(to); return; }
+      const t0 = performance.now(), dur = 900;
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const sweep = () => {
+      const h = window.innerHeight;
+      pending.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.92 && r.bottom > 0) reveal(el);
+      });
+      document.querySelectorAll('.zp-num').forEach((el) => {
+        if (el.getAttribute('data-counted')) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.86 && r.bottom > 0) runNum(el);
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    sweep();
+    // safety net: nothing may stay hidden
+    setTimeout(() => {
+      if (pending.size === items.length) items.forEach(reveal);
+      document.querySelectorAll('.zp-num').forEach((el) => {
+        const to = parseInt(el.getAttribute('data-to'), 10) || 0;
+        const pad = parseInt(el.getAttribute('data-pad'), 10) || 0;
+        const want = pad ? String(to).padStart(pad, '0') : String(to);
+        if (el.textContent !== want) { el.setAttribute('data-counted', '1'); el.textContent = want; }
+      });
+    }, 2600);
+
+    // hero portrait: curtain reveal on entry, then scroll-scrubbed crop + parallax
+    const shot = document.getElementById('zp-shot');
+    const shotImg = shot ? shot.querySelector('image-slot') : null;
+    const openShot = () => {
+      if (!shot) return;
+      shot.style.transition = 'clip-path 1.15s cubic-bezier(.76,0,.24,1)';
+      shot.style.clipPath = 'inset(0% 0 0 0 round 16px)';
+      if (shotImg) {
+        shotImg.style.transition = 'transform 1.6s cubic-bezier(.22,1,.36,1)';
+        shotImg.style.transform = 'scale(1.04)';
+      }
+    };
+    this._openShot = openShot;
+    if (shot && !reduce) {
+      shot.style.willChange = 'clip-path,transform';
+      shot.style.clipPath = 'inset(100% 0 0 0 round 16px)';
+      if (shotImg) { shotImg.style.willChange = 'transform'; shotImg.style.transform = 'scale(1.18)'; }
+      setTimeout(openShot, 2150);
+      setTimeout(openShot, 3600);
+    }
+
+    // hero scrub + progress bar + header condense
+    const hero = document.getElementById('zp-hero');
+    const bar = document.getElementById('zp-progress');
+    const head = document.getElementById('zp-head');
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const doc = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar) bar.style.width = (doc > 0 ? (y / doc) * 100 : 0) + '%';
+      if (hero && !reduce) {
+        const p = Math.min(1, y / (window.innerHeight * 1.3));
+        hero.style.transform = 'translateY(' + (-p * 90) + 'px) scale(' + (1 - p * 0.14) + ')';
+        hero.style.opacity = String(1 - p * 0.92);
+      }
+      if (head) head.style.padding = y > 40 ? '13px 34px' : '22px 34px';
+      if (shot && !reduce && y > 40 && this._openShot) this._openShot();
+      if (shot && !reduce && !this._shotLocked) {
+        const p = Math.min(1, y / (window.innerHeight * 1.6));
+        shot.style.transform = 'translateY(' + (-p * 54) + 'px) rotate(' + (p * -1.4) + 'deg)';
+        if (shotImg) shotImg.style.transform = 'translateY(' + (p * 46) + 'px) scale(' + (1.04 + p * 0.1) + ')';
+      }
+      if (this._sweep) this._sweep();
+    };
+    if (head) head.style.transition = 'padding .35s ' + ease;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // editorial tiles: hover lift + imagery push-in (entry motion lives in applyCardMotion)
+    const tiles = Array.from(document.querySelectorAll('.zp-tile'));
+    tiles.forEach((t) => {
+      const arrow = t.querySelector('.zp-arrow');
+      if (arrow) arrow.style.transition = 'transform .4s ' + ease;
+      const img = t.querySelector('image-slot');
+      if (img) img.style.transition = 'transform .7s ' + ease;
+      t.addEventListener('mouseenter', () => {
+        if (reduce) return;
+        const st = this._tileState && this._tileState.get(t);
+        if (st) { st.hover = true; this._paintTile(t); }
+        if (arrow) arrow.style.transform = 'translateX(7px)';
+        if (img) img.style.transform = 'scale(1.035)';
+      });
+      t.addEventListener('mouseleave', () => {
+        if (reduce) return;
+        const st = this._tileState && this._tileState.get(t);
+        if (st) { st.hover = false; this._paintTile(t); }
+        if (arrow) arrow.style.transform = 'none';
+        if (img) img.style.transform = 'none';
+      });
+    });
+    this.applyCardMotion();
+
+    this._shotLocked = true;
+    clearTimeout(this._unlockTimer);
+    this._unlockTimer = setTimeout(() => {
+      this._shotLocked = false;
+      if (shotImg) shotImg.style.transition = 'transform .2s linear';
+      onScroll();
+    }, 3800);
+
+    // the splash must never be able to sit on top of the page
+    const splash = document.getElementById('zp-splash');
+    if (splash) {
+      const dropSplash = () => { splash.style.pointerEvents = 'none'; splash.style.display = 'none'; };
+      splash.addEventListener('animationend', (e) => { if (e.target === splash) dropSplash(); });
+      clearTimeout(this._splashTimer);
+      this._splashTimer = setTimeout(dropSplash, 3200);
+    }
+
+    const resume = document.getElementById('zp-resume');
+    if (resume) {
+      resume.addEventListener('click', (e) => {
+        if (!window.__openResume) return;
+        e.preventDefault();
+        window.__openResume();
+      });
+    }
+
+    this.applyTheme();
+    this.startType();
+    this.initCursor();
+  }
+
+  componentDidUpdate(prev) {
+    this.applyTheme();
+    if (prev.heroType !== this.props.heroType) this.startType();
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._verbTimer);
+    (this._timers || []).forEach(clearTimeout);
+    clearTimeout(this._unlockTimer);
+    clearTimeout(this._splashTimer);
+    clearTimeout(this._motionFallback);
+    (this._motionCleanup || []).forEach((fn) => fn());
+  }
+
+  applyCardMotion() {
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const wrap = document.getElementById('zp-stack');
+    const tiles = Array.from(document.querySelectorAll('#zp-worklist .zp-tile'));
+    if (!wrap || !tiles.length) return;
+    (this._motionCleanup || []).forEach((fn) => fn());
+    this._motionCleanup = [];
+    clearTimeout(this._motionFallback);
+    this._tileState = new Map();
+    this._paintTile = () => {};
+    const stack = this.props.caseStacking !== false;
+    this._stackMode = stack;
+    tiles.forEach((t) => { t.style.transition = 'none'; t.style.transform = 'none'; t.style.opacity = '1'; t.style.visibility = 'visible'; t.style.pointerEvents = 'auto'; t.style.zIndex = ''; t.style.scale = ''; });
+    if (!stack) return;
+
+    const out = 'cubic-bezier(.65,0,.35,1)';
+    const settle = 'cubic-bezier(.22,1,.36,1)';
+    let active = -1;
+    const setActive = (i) => {
+      if (i === active) return;
+      const prev = active;
+      const dir = i > prev ? 1 : -1;
+      active = i;
+      tiles.forEach((t, j) => {
+        if (j === i) {
+          t.style.transition = 'none';
+          t.style.visibility = 'visible';
+          t.style.pointerEvents = 'auto';
+          t.style.zIndex = '2';
+          if (prev < 0 || reduce) { t.style.opacity = '1'; t.style.transform = 'none'; return; }
+          t.style.opacity = '0';
+          t.style.transform = 'scale(1.04)';
+          void t.offsetWidth;
+          t.style.transition = 'opacity .7s ease .32s, transform 1.1s ' + settle + ' .32s';
+          t.style.opacity = '1';
+          t.style.transform = 'none';
+        } else if (j === prev) {
+          t.style.zIndex = '1';
+          t.style.pointerEvents = 'none';
+          t.style.transition = reduce ? 'none' : 'transform .75s ' + out + ', opacity .75s ease';
+          t.style.transform = 'translateY(' + (dir > 0 ? '-112%' : '112%') + ')';
+          t.style.opacity = '0.4';
+        } else {
+          t.style.transition = 'none';
+          t.style.opacity = '0';
+          t.style.pointerEvents = 'none';
+          t.style.zIndex = '0';
+        }
+      });
+    };
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const vh = window.innerHeight;
+        const top = wrap.getBoundingClientRect().top;
+        const i = Math.max(0, Math.min(tiles.length - 1, Math.floor((-top + vh * 0.5) / vh)));
+        setActive(i);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    this._motionCleanup.push(() => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(raf);
+    });
+    onScroll();
+  }
+
+  initCursor() {
+    if (this._cursorOn) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const cur = document.getElementById('zp-cursor');
+    const lab = document.getElementById('zp-cursor-label');
+    if (!cur) return;
+    this._cursorOn = true;
+    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
+    const move = e => { mx = e.clientX; my = e.clientY; cur.style.opacity = '1'; };
+    addEventListener('mousemove', move);
+    addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
+
+    const grow = (w, text) => { cur.style.width = w + 'px'; cur.style.height = w + 'px'; if (lab) { lab.textContent = text; lab.style.opacity = text ? '1' : '0'; } };
+    document.addEventListener('mouseover', e => {
+      const t = e.target;
+      if (t.closest && t.closest('.zp-tile')) grow(62, 'READ');
+      else if (t.closest && t.closest('a,button')) grow(30, '');
+      else grow(10, '');
+    });
+
+    const loop = () => {
+      cx += (mx - cx) * .18; cy += (my - cy) * .18;
+      cur.style.transform = 'translate(' + (cx - cur.offsetWidth / 2) + 'px,' + (cy - cur.offsetHeight / 2) + 'px)';
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  applyTheme() {
+    const faces = {
+      'Bricolage Grotesque': { f: "'Bricolage Grotesque'", w: 600, ls: '-.035em' },
+      'Instrument Serif': { f: "'Instrument Serif'", w: 400, ls: '-.015em' },
+      'Syne': { f: "'Syne'", w: 700, ls: '-.03em' },
+      'Montserrat': { f: "'Montserrat'", w: 500, ls: '-.05em' },
+      'Cabin': { f: "'Cabin'", w: 600, ls: '-.03em' },
+      'Merriweather': { f: "'Merriweather'", w: 700, ls: '-.02em' },
+      'Playfair Display': { f: "'Playfair Display'", w: 700, ls: '-.02em' },
+      'Cormorant Garamond': { f: "'Cormorant Garamond'", w: 600, ls: '-.01em' },
+      'Bodoni Moda': { f: "'Bodoni Moda'", w: 600, ls: '-.02em' },
+      'Crimson Text': { f: "'Crimson Text'", w: 600, ls: '-.01em' },
+      'DM Serif Display': { f: "'DM Serif Display'", w: 400, ls: '-.02em' },
+      'Libre Baskerville': { f: "'Libre Baskerville'", w: 700, ls: '-.02em' },
+      'EB Garamond': { f: "'EB Garamond'", w: 600, ls: '-.01em' }
+    };
+    const face = faces[this.props.headlineFont] || faces['Bricolage Grotesque'];
+    document.documentElement.style.setProperty('--zb', "'" + (this.props.bodyFont || 'Karla') + "'");
+    const deep = this.props.purpleDeep || '#2E0250';
+    const tint = this.props.purpleTint || '#F3ECFA';
+    const s = document.documentElement.style;
+    s.setProperty('--zd', face.f);
+    s.setProperty('--zw', String(face.w));
+    s.setProperty('--zls', face.ls);
+    s.setProperty('--p-deep', deep);
+    s.setProperty('--p-tint', tint);
+    s.setProperty('--p-wash', 'rgba(86,5,145,.11)');
+
+    const logo = this.props.logoStyle || 'Prompt';
+    document.querySelectorAll('[data-logo]').forEach((el) => { el.style.display = el.getAttribute('data-logo') === logo ? 'flex' : 'none'; });
+    const nc = this.props.caseNumberColor || '#FFFFFF';
+    const style = this.props.caseNumberStyle || 'Filled';
+    s.setProperty('--znum', style === 'Outlined' ? 'transparent' : nc);
+    s.setProperty('--znumstroke', style === 'Outlined' ? '1px' : '0');
+    s.setProperty('--znumop', style === 'Muted' ? '.42' : '1');
+
+    const ovStyles = {
+      'Frosted light': { bg: 'rgba(255,255,255,.82)', border: '1px solid rgba(255,255,255,.6)', blur: '10px', ink: 'rgba(23,21,26,.75)', shadow: 'none', radius: '0' },
+      'Frosted dark': { bg: 'rgba(23,21,26,.58)', border: '1px solid rgba(255,255,255,.18)', blur: '12px', ink: '#ffffff', shadow: 'none', radius: '0' },
+      'Solid purple': { bg: deep, border: '1px solid ' + deep, blur: '0px', ink: '#ffffff', shadow: 'none', radius: '0' },
+      'Hairline': { bg: 'rgba(250,249,251,.22)', border: '1px solid rgba(255,255,255,.75)', blur: '3px', ink: '#ffffff', shadow: '0 1px 12px rgba(0,0,0,.45)', radius: '0' },
+      'No box': { bg: 'transparent', border: '1px solid transparent', blur: '0px', ink: '#ffffff', shadow: '0 2px 14px rgba(0,0,0,.6)', radius: '0' }
+    };
+    const o = ovStyles[this.props.overlayStyle] || ovStyles['Frosted dark'];
+    s.setProperty('--zovbg', o.bg);
+    s.setProperty('--zovborder', o.border);
+    s.setProperty('--zovblur', o.blur);
+    s.setProperty('--zovink', o.ink);
+    s.setProperty('--zovshadow', o.shadow);
+    s.setProperty('--zovradius', this.props.overlayRounded ? '999px' : o.radius);
+
+    const stack = this.props.caseStacking !== false;
+    const root = document.documentElement;
+    root.style.scrollSnapType = '';
+    root.style.scrollPaddingTop = '';
+    const wrap = document.getElementById('zp-stack');
+    const stage = document.getElementById('zp-stage');
+    if (wrap) wrap.style.height = stack ? '400svh' : 'auto';
+    if (stage) { stage.style.position = stack ? 'sticky' : 'static'; stage.style.height = stack ? '100svh' : 'auto'; stage.style.overflow = stack ? 'hidden' : 'visible'; stage.style.display = stack ? 'block' : 'flex'; stage.style.flexDirection = 'column'; stage.style.gap = '56px'; }
+    Array.from(document.querySelectorAll('#zp-worklist .zp-tile')).forEach((c) => {
+      c.style.position = stack ? 'absolute' : 'relative';
+      c.style.inset = stack ? '24px 0 24px 0' : '';
+      c.style.borderTop = stack ? 'none' : '';
+      c.style.paddingTop = stack ? '0' : '';
+      c.style.height = stack ? '' : '80svh';
+      c.style.overflow = 'hidden';
+      c.style.marginBottom = '';
+      const r = (this.props.cardRadius ?? 0) + 'px';
+      const media = c.firstElementChild;
+      if (media) { media.style.borderRadius = r; media.style.transform = 'translateZ(0)'; }
+    });
+    if (this._stackMode !== stack) { this._stackMode = stack; if (this._tileState) this.applyCardMotion(); }
+
+  }
+
+  startType() {
+    const h1 = document.getElementById('zp-h1');
+    if (!h1) return;
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    (this._timers || []).forEach(clearTimeout);
+    this._timers = [];
+    const T = (fn, ms) => { this._timers.push(setTimeout(fn, ms)); };
+
+    const lines = Array.from(h1.children).filter((c) => c.tagName === 'SPAN');
+    if (!this._texts) this._texts = lines.map((l) => l.textContent.trim());
+    const texts = this._texts;
+    const mode = this.props.heroType || 'Ghost outline';
+
+    const inners = lines.map((line, i) => {
+      line.textContent = '';
+      line.style.position = 'relative';
+      line.style.minHeight = mode === 'Grow into place' ? '0' : '1em';
+      const ghost = document.createElement('span');
+      ghost.textContent = texts[i];
+      // ghost and typed run must be the same kind of box, or their baselines diverge
+      ghost.style.cssText = 'position:absolute;left:0;top:0;display:block;font:inherit;line-height:inherit;white-space:nowrap;pointer-events:none;opacity:' + (mode === 'Ghost outline' ? '.12' : '0');
+      const inner = document.createElement('span');
+      inner.style.cssText = 'display:block;font:inherit;line-height:inherit;white-space:nowrap';
+      line.appendChild(ghost);
+      line.appendChild(inner);
+      return inner;
+    });
+
+    if (reduce) { inners.forEach((el, i) => { el.textContent = texts[i]; }); return; }
+
+    const newCaret = () => {
+      const c = document.createElement('span');
+      c.style.cssText = 'display:inline-block;width:.05em;height:.78em;margin-left:.05em;vertical-align:-.02em;background:var(--p-deep,#560591);animation:caretBlink .85s step-end infinite';
+      return c;
+    };
+
+    if (mode === 'All lines at once') {
+      lines.forEach((line, i) => {
+        const full = texts[i];
+        const c = newCaret();
+        let n = 0;
+        const go = () => {
+          if (n >= full.length) { T(() => c.remove(), 800); return; }
+          const ch = full[n++];
+          inners[i].textContent = full.slice(0, n);
+          inners[i].appendChild(c);
+          T(go, ch === ' ' ? 70 : 36 + Math.random() * 32);
+        };
+        T(go, 3000 + i * 110);
+      });
+      return;
+    }
+
+    const caret = newCaret();
+    let li = 0, n = 0;
+    const step = () => {
+      if (li >= lines.length) { inners[inners.length - 1].appendChild(caret); return; }
+      const full = texts[li];
+      if (n < full.length) {
+        const ch = full[n++];
+        inners[li].textContent = full.slice(0, n);
+        inners[li].appendChild(caret);
+        T(step, ch === ' ' ? 85 : 44 + Math.random() * 42);
+      } else { li++; n = 0; T(step, 250); }
+    };
+    T(step, 3000);
+  }
+}
+
+</script>
+</body>
+</html>
