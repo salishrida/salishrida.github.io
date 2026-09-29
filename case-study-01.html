@@ -21,10 +21,26 @@ a:hover{color:#17151a}
 ::selection{background:#560591;color:#fff}
 @keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
 @media (hover:hover) and (pointer:fine){body,body a,body button{cursor:none}}
+
+@media (max-width:820px){
+  [data-m-unstick]{position:static!important;top:auto!important}
+  [data-m-hero]{height:auto!important;min-height:0!important;aspect-ratio:4/3}
+  [style*="grid-column: span 2"],[style*="grid-column:span 2"]{grid-column:auto!important}
+}
+@media (max-width:600px){
+  [data-m-hide]{display:none!important}
+  [data-m-header]{padding:16px 18px!important;gap:12px!important}
+  [data-m-nav]{gap:16px!important;padding:8px 2px!important;font-size:13px!important}
+  [data-m-resume]{padding:10px 14px!important}
+  [data-m-nav] a{display:inline-flex;align-items:center;min-height:44px}
+  [data-m-header]>a{min-height:44px}
+  .zx-resume{padding:12px 14px!important}
+  [data-m-fade]{height:66%!important;background:linear-gradient(to top,#fff 0%,#fff 38%,rgba(255,255,255,.75) 62%,rgba(255,255,255,0) 100%)!important}
+}
 </style>
 </helmet>
 
-<div id="zx-cur" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;opacity:0;transition:opacity .3s ease">
+<div id="zx-cur" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:2147483647;pointer-events:none;opacity:0;transition:opacity .3s ease">
   <div id="zx-cur-body" style="position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 12px;border-radius:999px;background:#560591;opacity:0;transform-origin:0 50%;transition:opacity .25s ease,background .3s ease">
     <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
     <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
@@ -33,22 +49,22 @@ a:hover{color:#17151a}
 </div>
 <div id="zc-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
 
-<header id="zc-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
+<header data-m-header="" id="zc-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
   <a href="./index.html" aria-label="Shrida Sali — home" style="display:flex;align-items:center;gap:12px;color:#17151a" style-hover="color:#17151a">
     <span style="display:flex;align-items:baseline;font:500 30px/1 'JetBrains Mono',monospace;letter-spacing:-.06em;color:#17151a"><span>s</span><span style="color:#560591">/</span><span>s</span><span style="width:.5em;height:.1em;background:#560591;margin-left:.08em;animation:caretBlink 1s step-end infinite"></span></span>
     <span style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.26em;color:#17151a">SHRIDA SALI</span>
   </a>
   <div style="display:flex;align-items:center;gap:12px">
-    <nav style="display:flex;align-items:center;gap:26px;padding:11px 8px;font-family:'Montserrat',sans-serif">
+    <nav data-m-nav="" style="display:flex;align-items:center;gap:26px;padding:11px 8px;font-family:'Montserrat',sans-serif">
       <a href="./work.html" style="color:#560591">Work</a>
       <a href="./about.html" style="color:#17151a" style-hover="color:#560591">About</a>
-      <a href="#contact" style="color:#17151a" style-hover="color:#560591">Contact</a>
+      <a data-m-hide="" href="#contact" style="color:#17151a" style-hover="color:#560591">Contact</a>
     </nav>
     <a class="zx-resume" href="./assets/Shrida-Sali-Resume.pdf" target="_blank" rel="noopener" style="padding:12px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Resume</a>
   </div>
 </header>
 
-<div data-screen-label="Case hero image" style="position:relative;height:82vh;min-height:440px;overflow:hidden;background:rgba(23,21,26,.06)">
+<div data-m-hero="" data-screen-label="Case hero image" style="position:relative;height:82vh;min-height:440px;overflow:hidden;background:rgba(23,21,26,.06)">
   <div id="zc-heroimg" style="position:absolute;inset:0">
     <img src="./assets/case01-cover-phones.jpg" alt="Ops Buddy — Gen AI troubleshooting assistant, app screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block">
   </div>
@@ -86,7 +102,7 @@ a:hover{color:#17151a}
 
   <section data-screen-label="01 The moment" style="padding:0 28px 120px">
     <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px">
-      <div style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
+      <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
         <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">01 — THE MOMENT</div>
         <div data-r="" data-d="1" style="font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">What the challenge was</div>
       </div>
@@ -100,7 +116,7 @@ a:hover{color:#17151a}
 
   <section data-screen-label="02 What I found" style="padding:0 28px 120px">
     <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px">
-      <div style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
+      <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
         <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">02 — WHAT I FOUND</div>
         <div data-r="" data-d="1" style="font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">The mental models we found</div>
       </div>
@@ -137,7 +153,7 @@ a:hover{color:#17151a}
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;padding-top:40px;border-top:1px solid rgba(23,21,26,.12)">
-        <div style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+        <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
           <span data-r="" style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif"><span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Iteration 1</span>
           <div data-r="" data-d="1" style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:16ch">The first iteration: a chatbot</div>
         </div>
@@ -157,7 +173,7 @@ a:hover{color:#17151a}
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;padding-top:40px;border-top:1px solid rgba(23,21,26,.12)">
-        <div style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+        <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
           <span data-r="" style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif"><span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Iteration 2</span>
           <div data-r="" data-d="1" style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:16ch">From chatbot to augmented AI</div>
         </div>
@@ -217,7 +233,7 @@ a:hover{color:#17151a}
             <p style="margin:0;max-width:46ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">When the fix is <strong style="font-weight:700;color:#560591">beyond the manager</strong>, managers can <strong style="font-weight:700;color:#560591">escalate to an engineer</strong> from inside the app. The <strong style="font-weight:700;color:#560591">call-out ticket</strong> is drafted for them, with the appliance, the issue and the <strong style="font-weight:700;color:#560591">steps already attempted</strong>. The manager can <strong style="font-weight:700;color:#560591">review</strong> it before it's sent.</p>
           </div>
         </div>
-        <div data-dstory-phone="" style="flex:1 1 340px;min-width:0;position:sticky;top:110px;display:flex;flex-direction:column;align-items:center;gap:20px;padding:clamp(24px,3vw,40px);border-radius:20px;background:#fff;border:1px solid rgba(23,21,26,.12)">
+        <div data-dstory-phone="" data-m-unstick="" style="flex:1 1 340px;min-width:0;position:sticky;top:110px;display:flex;flex-direction:column;align-items:center;gap:20px;padding:clamp(24px,3vw,40px);border-radius:20px;background:#fff;border:1px solid rgba(23,21,26,.12)">
           <div style="position:relative;width:min(100%,290px);aspect-ratio:396/834;border-radius:16.7% / 7.9%;overflow:hidden;background:transparent;box-shadow:0 1px 2px rgba(23,21,26,.06),0 24px 48px -24px rgba(23,21,26,.3);transform:translateZ(0)"><div data-dlayer="0" style="position:absolute;inset:0;opacity:1;transition:opacity .6s ease"><div data-vslot-ph="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:#fff;transition:opacity .5s ease"><div style="width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(23,21,26,.25);display:grid;place-items:center"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1.5v15l12.5-7.5z" fill="#560591"></path></svg></div><div style="font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.6)">MOBILE GIF 01</div><div style="font:400 10px/1.4 'JetBrains Mono',monospace;color:rgba(23,21,26,.42);white-space:nowrap">assets/gifs/decision-01.gif</div></div><img data-gslot="" data-src="./assets/gifs/decision-01.gif" alt="Decision 01 screen recording" style="position:absolute;left:-1.01%;top:-.6%;width:101.01%;height:100.6%;max-width:none;object-fit:fill;opacity:0;transition:opacity .5s ease"></div><div data-dlayer="1" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease"><div data-vslot-ph="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:#fff;transition:opacity .5s ease"><div style="width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(23,21,26,.25);display:grid;place-items:center"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1.5v15l12.5-7.5z" fill="#560591"></path></svg></div><div style="font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.6)">MOBILE GIF 02</div><div style="font:400 10px/1.4 'JetBrains Mono',monospace;color:rgba(23,21,26,.42);white-space:nowrap">assets/gifs/decision-02.gif</div></div><img data-gslot="" data-src="./assets/gifs/decision-02.gif" alt="Decision 02 screen recording" style="position:absolute;left:-1.01%;top:-.12%;width:101.01%;height:100.72%;max-width:none;object-fit:fill;opacity:0;transition:opacity .5s ease"></div><div data-dlayer="2" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease"><div data-vslot-ph="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:#fff;transition:opacity .5s ease"><div style="width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(23,21,26,.25);display:grid;place-items:center"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1.5v15l12.5-7.5z" fill="#560591"></path></svg></div><div style="font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.6)">MOBILE GIF 03</div><div style="font:400 10px/1.4 'JetBrains Mono',monospace;color:rgba(23,21,26,.42);white-space:nowrap">assets/gifs/decision-03.gif</div></div><img data-gslot="" data-src="./assets/gifs/decision-03.gif" alt="Decision 03 screen recording" style="position:absolute;left:-1.13%;top:-.12%;width:101.74%;height:100.24%;max-width:none;object-fit:fill;opacity:0;transition:opacity .5s ease"></div><div data-dlayer="3" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease"><div data-vslot-ph="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:#fff;transition:opacity .5s ease"><div style="width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(23,21,26,.25);display:grid;place-items:center"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1.5v15l12.5-7.5z" fill="#560591"></path></svg></div><div style="font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.6)">MOBILE GIF 04</div><div style="font:400 10px/1.4 'JetBrains Mono',monospace;color:rgba(23,21,26,.42);white-space:nowrap">assets/gifs/decision-04.gif</div></div><img data-gslot="" data-src="./assets/gifs/decision-04.gif" alt="Decision 04 screen recording" style="position:absolute;left:-.94%;top:-.12%;width:101.38%;height:100.24%;max-width:none;object-fit:fill;opacity:0;transition:opacity .5s ease"></div></div>
           <div style="display:flex;gap:6px;align-items:center"><span data-ddot="0" style="height:8px;width:22px;border-radius:999px;background:#560591;transition:width .4s ease,background .4s ease"></span><span data-ddot="1" style="height:8px;width:8px;border-radius:999px;background:rgba(23,21,26,.18);transition:width .4s ease,background .4s ease"></span><span data-ddot="2" style="height:8px;width:8px;border-radius:999px;background:rgba(23,21,26,.18);transition:width .4s ease,background .4s ease"></span><span data-ddot="3" style="height:8px;width:8px;border-radius:999px;background:rgba(23,21,26,.18);transition:width .4s ease,background .4s ease"></span></div>
         </div>
@@ -425,7 +441,7 @@ a:hover{color:#17151a}
 
   <section data-screen-label="06 Reflections" style="padding:0 28px 120px">
     <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px">
-      <div style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
+      <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:16px">
         <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">06 — REFLECTIONS</div>
         <div data-r="" data-d="1" style="font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">What I'd do differently.</div>
       </div>
@@ -799,7 +815,8 @@ class Component extends DCLogic {
     let pill = false, label = '', typeT = null, down = false, dark = false;
     const PURPLE = '#560591';
     addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; root.style.opacity = '1'; });
-    document.addEventListener('mouseleave', () => { root.style.opacity = '0'; });
+    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) root.style.opacity = '0'; });
+    document.addEventListener('mouseover', () => { root.style.opacity = '1'; });
     addEventListener('mousedown', () => { down = true; });
     addEventListener('mouseup', () => { down = false; });
     const isDark = (el) => {
@@ -843,7 +860,8 @@ class Component extends DCLogic {
       const s = pill ? 14 : 10;
       dot.style.width = s + 'px'; dot.style.height = s + 'px'; dot.style.margin = (-s / 2) + 'px 0 0 ' + (-s / 2) + 'px';
       dot.style.background = ink;
-      dot.style.boxShadow = pill ? '0 0 0 4px ' + (dark ? 'rgba(255,255,255,.28)' : 'rgba(86,5,145,.18)') : '0 0 0 0 rgba(86,5,145,0)';
+      const edge = dark ? PURPLE : '#fff';
+      dot.style.boxShadow = '0 0 0 2px ' + edge + ', 0 1px 6px rgba(23,21,26,.35)' + (pill ? ', 0 0 0 6px ' + (dark ? 'rgba(255,255,255,.3)' : 'rgba(86,5,145,.2)') : '');
     };
     document.addEventListener('mouseover', (e) => {
       const t = e.target;
