@@ -24,7 +24,13 @@ a:hover{color:#17151a}
 </style>
 </helmet>
 
-<div id="zc-cursor" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;width:10px;height:10px;border-radius:999px;background:#560591;opacity:0;transition:width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),opacity .3s ease"></div>
+<div id="zx-cur" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;opacity:0;transition:opacity .3s ease">
+  <div id="zx-cur-body" style="position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 12px;border-radius:999px;background:#560591;opacity:0;transform-origin:0 50%;transition:opacity .25s ease,background .3s ease">
+    <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
+    <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
+  </div>
+  <div id="zx-cur-dot" style="position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#560591;box-shadow:0 0 0 0 rgba(86,5,145,0);transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
+</div>
 <div id="zc-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
 
 <header id="zc-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
@@ -218,6 +224,7 @@ a:hover{color:#17151a}
     <h2 data-r="" data-d="1" style="margin:26px 0 0;font:600 clamp(32px,5.4vw,84px)/1.04 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:26ch">Let's <span class="zx-verb" style="display:inline-grid;vertical-align:baseline;overflow:hidden"><span style="grid-area:1/1;visibility:hidden">design</span></span><br>incredible products together</h2>
     <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:52px">
       <a href="mailto:shrida.sali96@gmail.com" style="padding:16px 28px;border-radius:999px;background:#fff;color:#2E0250;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="background:#faf9fb;color:#2E0250">Email me</a>
+      <a href="tel:+971562643337" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Call +971 56 264 3337</a>
       <a href="https://www.linkedin.com/in/shrida-s-2ab60ab5/" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">LinkedIn</a>
       <a href="https://www.behance.net/shridasali96" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Behance</a><a href="https://dribbble.com/salishrida" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Dribbble</a>
     </div>
@@ -323,6 +330,7 @@ class Component extends DCLogic {
     onScroll();
     setTimeout(() => { Array.from(pending).forEach(reveal); q('.zc-num').forEach(runNum); }, 3000);
 
+    this.initCall();
     this.initCursor();
     if (!reduce) this.animateExtras();
     this.initDecisionNav();
@@ -541,23 +549,103 @@ class Component extends DCLogic {
     }));
   }
 
-  initCursor() {
-    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-    const cur = document.getElementById('zc-cursor');
-    if (!cur) return;
-    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cur.style.opacity = '1'; });
-    document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
-    document.addEventListener('mouseover', (e) => {
-      const w = e.target.closest && e.target.closest('a,button') ? 30 : 10;
-      cur.style.width = w + 'px'; cur.style.height = w + 'px';
+  initCall() {
+    const isPhone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || matchMedia('(pointer:coarse)').matches;
+    document.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+      if (a.dataset.callWired) return;
+      a.dataset.callWired = '1';
+      if (isPhone) return;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const num = a.getAttribute('href').replace('tel:', '');
+        const orig = a.dataset.orig || a.textContent;
+        a.dataset.orig = orig;
+        const done = () => { a.textContent = 'Number copied \u2713'; clearTimeout(a._t); a._t = setTimeout(() => { a.textContent = orig; }, 2200); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(num).then(done, () => { location.href = 'tel:' + num; });
+        else location.href = 'tel:' + num;
+      });
     });
-    const loop = () => {
-      cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
-      cur.style.transform = 'translate(' + (cx - cur.offsetWidth / 2) + 'px,' + (cy - cur.offsetHeight / 2) + 'px)';
-      this._raf = requestAnimationFrame(loop);
+  }
+
+  initCursor() {
+    if (this._cursorOn) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const root = document.getElementById('zx-cur');
+    const body = document.getElementById('zx-cur-body');
+    const txt = document.getElementById('zx-cur-text');
+    const caret = document.getElementById('zx-cur-caret');
+    const dot = document.getElementById('zx-cur-dot');
+    if (!root || !body || !txt || !caret || !dot) return;
+    this._cursorOn = true;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
+    let pill = false, label = '', typeT = null, down = false, dark = false;
+    const PURPLE = '#560591';
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; root.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => { root.style.opacity = '0'; });
+    addEventListener('mousedown', () => { down = true; });
+    addEventListener('mouseup', () => { down = false; });
+    const isDark = (el) => {
+      for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+        const c = getComputedStyle(n).backgroundColor;
+        const m = c && c.match(/rgba?\(([^)]+)\)/);
+        if (!m) continue;
+        const p = m[1].split(',').map(parseFloat);
+        if (p.length === 4 && p[3] < 0.5) continue;
+        return (0.2126 * p[0] + 0.7152 * p[1] + 0.0722 * p[2]) / 255 < 0.42;
+      }
+      return false;
     };
-    this._raf = requestAnimationFrame(loop);
+    const labelFor = (a) => {
+      if (a.dataset && a.dataset.cursor) return a.dataset.cursor;
+      if (a.matches('.zp-tile,.zw-card,.zc-jump')) return 'READ CASE';
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('mailto:')) return 'SAY HI';
+      if (href.startsWith('tel:')) return 'CALL';
+      if (/\.pdf($|\?)/i.test(href)) return 'RESUME \u2193';
+      if (/^https?:/i.test(href)) return 'OPEN \u2197';
+      if (href.startsWith('#')) return 'JUMP';
+      if (a.tagName === 'BUTTON') return 'CLICK';
+      return 'GO \u2192';
+    };
+    const type = (s) => {
+      if (s === label) return;
+      label = s;
+      clearInterval(typeT);
+      if (!s) { txt.textContent = ''; return; }
+      if (reduce) { txt.textContent = s; return; }
+      let i = 0; txt.textContent = '';
+      typeT = setInterval(() => { i++; txt.textContent = s.slice(0, i); if (i >= s.length) clearInterval(typeT); }, 34);
+    };
+    const paint = () => {
+      const ink = dark ? '#fff' : PURPLE;
+      body.style.opacity = pill ? '1' : '0';
+      body.style.background = ink;
+      txt.style.color = dark ? PURPLE : '#fff';
+      caret.style.background = dark ? PURPLE : '#fff';
+      const s = pill ? 14 : 10;
+      dot.style.width = s + 'px'; dot.style.height = s + 'px'; dot.style.margin = (-s / 2) + 'px 0 0 ' + (-s / 2) + 'px';
+      dot.style.background = ink;
+      dot.style.boxShadow = pill ? '0 0 0 4px ' + (dark ? 'rgba(255,255,255,.28)' : 'rgba(86,5,145,.18)') : '0 0 0 0 rgba(86,5,145,0)';
+    };
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target;
+      if (!t || !t.closest) return;
+      dark = isDark(t);
+      const a = t.closest('a,button,.zp-tile,.zw-card,[data-cursor]');
+      pill = !!a;
+      type(a ? labelFor(a) : '');
+      paint();
+    });
+    paint();
+    const loop = (now) => {
+      px += (mx - px) * (reduce ? 1 : 0.2); py += (my - py) * (reduce ? 1 : 0.2);
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) scale(' + (down ? 0.7 : 1) + ')';
+      body.style.transform = 'translate(' + (px + 16) + 'px,' + (py + 14) + 'px) scale(' + (pill ? (down ? 0.92 : 1) : 0.7) + ')';
+      caret.style.opacity = Math.floor(now / 530) % 2 === 1 && txt.textContent === label ? '0' : '1';
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
   }
 
   componentWillUnmount() {

@@ -25,7 +25,13 @@ a:hover{color:#17151a}
 </style>
 </helmet>
 
-<div id="za-cursor" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;width:10px;height:10px;border-radius:999px;background:#560591;opacity:0;transition:width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),opacity .3s ease"></div>
+<div id="zx-cur" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:95;pointer-events:none;opacity:0;transition:opacity .3s ease">
+  <div id="zx-cur-body" style="position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 12px;border-radius:999px;background:#560591;opacity:0;transform-origin:0 50%;transition:opacity .25s ease,background .3s ease">
+    <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
+    <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
+  </div>
+  
+</div>
 
 <header id="za-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
   <a href="./index.html" aria-label="Shrida Sali — home" style="display:flex;align-items:center;gap:12px;color:#17151a" style-hover="color:#17151a">
@@ -44,21 +50,21 @@ a:hover{color:#17151a}
 
 <section id="top" data-screen-label="About hero" style="padding:clamp(120px,18vh,160px) 28px 80px">
   <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,5vw,80px);align-items:end">
-    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:26px;padding-bottom:8px">
+    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 26px; padding-bottom: 8px; position: relative">
       <span data-r="" style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">
         <span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Textiles → Product → Gen AI
       </span>
       <h1 style="margin:0;font:700 clamp(44px,6.4vw,104px)/.98 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#17151a">
-        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">Empathy is</span></span>
-        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">the whole</span></span>
-        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block;color:#560591">method.</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">I listen</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block">before I</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span class="za-line" style="display:block;color:#560591">design.</span></span>
       </h1>
-      <p data-r="" data-d="2" style="margin:0;max-width:40ch;font:400 16px/1.55 'Karla',sans-serif;color:rgba(23,21,26,.78);text-wrap:pretty">I work on AI products for businesses, somewhere between the people who want them and the people who have to use them.</p>
+      <p data-r="" data-d="2" style="margin:0;max-width:40ch;font:400 16px/1.55 'Karla',sans-serif;color:rgba(23,21,26,.78);text-wrap:pretty">Now I design <strong style="font-weight:700;color:#560591">AI products</strong> that help <strong style="font-weight:700;color:#560591">enterprise clients</strong> solve <strong style="font-weight:700;color:#560591">complex business problems</strong>. I start with the <strong style="font-weight:700;color:#560591">people who'll actually use them</strong>, and <strong style="font-weight:700;color:#560591">design for their needs</strong>.</p>
       <div data-r="" data-d="3" style="display:flex;flex-wrap:wrap;gap:10px">
         <a href="mailto:shrida.sali96@gmail.com" style="padding:13px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Email me</a>
-        <span style="display:inline-flex;align-items:center;padding:13px 4px;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">2019 — 2026 · DUBAI, UAE</span>
+        <span style="display:inline-flex;align-items:center;padding:13px 4px;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">AVAILABLE FOR WORK IMMEDIATELY · DUBAI, UAE</span>
       </div>
-    </div>
+    <div id="zx-cur-dot" style="position: absolute; left: 349px; top: 81px; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #560591; box-shadow: 0 0 0 0 rgba(86,5,145,0); transition: width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div></div>
     <div id="za-shot" style="position:relative;aspect-ratio:4/5;width:min(100%,calc(74vh * .8),560px);justify-self:end;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)">
       <image-slot id="za-portrait" src="./assets/portrait.png" shape="rect" placeholder="Portrait" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
     </div>
@@ -72,12 +78,13 @@ a:hover{color:#17151a}
       <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">From artisans to agents.</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:26px;max-width:60ch;grid-column:span 2">
-      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">I started my career as a textile designer, working alongside artisans and found myself empathising with them as they losing their business to cheaper alternatives. This was the first real world problem I cared about solving.</p>
-      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Trying to solve this problem pushed me towards a masters in Design Management, and then into product.</p>
-      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Somewhere along the way into product design, I stumbled into AI and haven't looked back since.</p>
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">I started my career as a <strong style="font-weight:700;color:#560591">textile designer</strong>, working alongside artisans who were <strong style="font-weight:700;color:#560591">losing</strong> their <strong style="font-weight:700;color:#560591">business</strong> to <strong style="font-weight:700;color:#560591">cheaper alternatives</strong>. Watching that up close, I couldn't stop thinking about it. It was the first <strong style="font-weight:700;color:#560591">real world problem I cared about solving</strong>.</p>
+      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Trying to solve this problem pushed me towards a <strong style="font-weight:700;color:#560591">masters in Design Management</strong>, and then into <strong style="font-weight:700;color:#560591">product</strong>.</p>
+      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Somewhere along the way into <strong style="font-weight:700;color:#560591">product design</strong>, I stumbled into <strong style="font-weight:700;color:#560591">AI</strong> and haven't looked back since.</p>
+      <p data-r="" data-d="2" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">For the past three years at <strong style="font-weight:700;color:#560591">Capgemini</strong>, I've designed AI products for enterprise clients, taking them all the way from the first discovery workshop to screens that shipped.</p>
       <div data-r="" data-d="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px">
         <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div class="za-num" data-to="3" style="font:700 clamp(36px,4vw,60px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591">0</div><div style="font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:rgba(23,21,26,.6)">YEARS SHIPPING AI NATIVE PRODUCTS</div></div>
-        <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div class="za-num" data-to="4" data-pad="2" style="font:700 clamp(36px,4vw,60px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591">0</div><div style="font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:rgba(23,21,26,.6)">CASE STUDIES</div></div>
+        <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div class="za-num" data-to="10" data-suffix="+" style="font:700 clamp(36px,4vw,60px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591">0+</div><div style="font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:rgba(23,21,26,.6)">AI PRODUCTS DESIGNED</div></div>
       </div>
     </div>
   </div>
@@ -86,7 +93,7 @@ a:hover{color:#17151a}
 <section data-screen-label="What I believe" style="padding:40px 28px">
   <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,88px);border-radius:20px;background:#17151a;color:#fff;display:flex;flex-direction:column;gap:26px">
     <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.6)">WHAT I BELIEVE</div>
-    <p data-r="" data-d="1" style="margin:0;font:700 clamp(28px,4.4vw,68px)/1.06 'Bricolage Grotesque',sans-serif;letter-spacing:-.035em;max-width:24ch;text-wrap:pretty">[Your lens, one or two sentences, set at display size. The same insight component the case studies use. Placeholder.]</p>
+    <p data-r="" data-d="1" style="margin:0;font:700 clamp(28px,4.4vw,68px)/1.06 'Bricolage Grotesque',sans-serif;letter-spacing:-.035em;max-width:24ch;text-wrap:pretty">I got into design because I cared about the people I was designing for. The tools I use have changed since then. The reason hasn't.</p>
   </div>
 </section>
 
@@ -97,7 +104,7 @@ a:hover{color:#17151a}
       <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">What I'm working on.</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:24px;max-width:60ch;grid-column:span 2">
-      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[What you are working on and what you are looking for next. Placeholder.]</p>
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Right now I'm designing <strong style="font-weight:700;color:#560591">Gen AI and agentic tools</strong> for <strong style="font-weight:700;color:#560591">enterprise teams</strong>, from an assistant that helps restaurant managers fix a broken fryer mid-service, to a dashboard that helps an airport prove its biodiversity gains. Next, I'm looking for a role where AI sits at the heart of the product, and where I still get to spend real time with the people using it.</p>
       <div data-r="" data-d="1" style="display:flex;flex-wrap:wrap;gap:8px">
         <span style="padding:10px 16px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif">GenAI</span>
         <span style="padding:10px 16px;border-radius:12px;border:1px solid rgba(23,21,26,.16);color:#17151a;font:600 13px/1 'Karla',sans-serif">Agentic AI</span>
@@ -115,7 +122,7 @@ a:hover{color:#17151a}
       <div data-r="" data-d="1" style="font:700 clamp(26px,2.8vw,42px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">Away from the screen.</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:24px;max-width:60ch;grid-column:span 2">
-      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">When I am not brainstorming or designing, I am either cooking exotic food, looking at luxury homes or planning my next trip with a cup of tea in my hand.</p>
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">When I'm not designing, I'm usually <strong style="font-weight:700;color:#560591">cooking exotic food</strong>, <strong style="font-weight:700;color:#560591">looking at luxury homes</strong> or <strong style="font-weight:700;color:#560591">planning my next trip</strong>, almost always with a <strong style="font-weight:700;color:#560591">cup of tea</strong> in my hand.</p>
     </div>
   </div>
 </section>
@@ -126,6 +133,7 @@ a:hover{color:#17151a}
     <h2 data-r="" data-d="1" style="margin:26px 0 0;font:600 clamp(32px,5.4vw,84px)/1.04 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:26ch">Let's <span class="zx-verb" style="display:inline-grid;vertical-align:baseline;overflow:hidden"><span style="grid-area:1/1;visibility:hidden">design</span></span><br>incredible products together</h2>
     <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:52px">
       <a href="mailto:shrida.sali96@gmail.com" style="padding:16px 28px;border-radius:999px;background:#fff;color:#2E0250;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="background:#faf9fb;color:#2E0250">Email me</a>
+      <a href="tel:+971562643337" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Call +971 56 264 3337</a>
       <a href="https://www.linkedin.com/in/shrida-s-2ab60ab5/" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">LinkedIn</a>
       <a href="https://www.behance.net/shridasali96" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Behance</a><a href="https://dribbble.com/salishrida" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Dribbble</a>
     </div>
@@ -217,7 +225,8 @@ class Component extends DCLogic {
       el.dataset.counted = '1';
       const to = parseInt(el.dataset.to, 10) || 0;
       const pad = parseInt(el.dataset.pad, 10) || 0;
-      const fmt = (v) => (pad ? String(v).padStart(pad, '0') : String(v));
+      const suf = el.dataset.suffix || '';
+      const fmt = (v) => (pad ? String(v).padStart(pad, '0') : String(v)) + suf;
       if (reduce) { el.textContent = fmt(to); return; }
       const t0 = performance.now();
       const tick = (t) => {
@@ -242,26 +251,107 @@ class Component extends DCLogic {
     onScroll();
     setTimeout(() => { Array.from(pending).forEach(reveal); q('.za-num').forEach(runNum); }, 3000);
 
+    this.initCall();
     this.initCursor();
   }
 
-  initCursor() {
-    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-    const cur = document.getElementById('za-cursor');
-    if (!cur) return;
-    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cur.style.opacity = '1'; });
-    document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
-    document.addEventListener('mouseover', (e) => {
-      const w = e.target.closest && e.target.closest('a,button') ? 30 : 10;
-      cur.style.width = w + 'px'; cur.style.height = w + 'px';
+  initCall() {
+    const isPhone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || matchMedia('(pointer:coarse)').matches;
+    document.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+      if (a.dataset.callWired) return;
+      a.dataset.callWired = '1';
+      if (isPhone) return;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const num = a.getAttribute('href').replace('tel:', '');
+        const orig = a.dataset.orig || a.textContent;
+        a.dataset.orig = orig;
+        const done = () => { a.textContent = 'Number copied \u2713'; clearTimeout(a._t); a._t = setTimeout(() => { a.textContent = orig; }, 2200); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(num).then(done, () => { location.href = 'tel:' + num; });
+        else location.href = 'tel:' + num;
+      });
     });
-    const loop = () => {
-      cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
-      cur.style.transform = 'translate(' + (cx - cur.offsetWidth / 2) + 'px,' + (cy - cur.offsetHeight / 2) + 'px)';
-      this._raf = requestAnimationFrame(loop);
+  }
+
+  initCursor() {
+    if (this._cursorOn) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const root = document.getElementById('zx-cur');
+    const body = document.getElementById('zx-cur-body');
+    const txt = document.getElementById('zx-cur-text');
+    const caret = document.getElementById('zx-cur-caret');
+    const dot = document.getElementById('zx-cur-dot');
+    if (!root || !body || !txt || !caret || !dot) return;
+    this._cursorOn = true;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
+    let pill = false, label = '', typeT = null, down = false, dark = false;
+    const PURPLE = '#560591';
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; root.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => { root.style.opacity = '0'; });
+    addEventListener('mousedown', () => { down = true; });
+    addEventListener('mouseup', () => { down = false; });
+    const isDark = (el) => {
+      for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+        const c = getComputedStyle(n).backgroundColor;
+        const m = c && c.match(/rgba?\(([^)]+)\)/);
+        if (!m) continue;
+        const p = m[1].split(',').map(parseFloat);
+        if (p.length === 4 && p[3] < 0.5) continue;
+        return (0.2126 * p[0] + 0.7152 * p[1] + 0.0722 * p[2]) / 255 < 0.42;
+      }
+      return false;
     };
-    this._raf = requestAnimationFrame(loop);
+    const labelFor = (a) => {
+      if (a.dataset && a.dataset.cursor) return a.dataset.cursor;
+      if (a.matches('.zp-tile,.zw-card,.zc-jump')) return 'READ CASE';
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('mailto:')) return 'SAY HI';
+      if (href.startsWith('tel:')) return 'CALL';
+      if (/\.pdf($|\?)/i.test(href)) return 'RESUME \u2193';
+      if (/^https?:/i.test(href)) return 'OPEN \u2197';
+      if (href.startsWith('#')) return 'JUMP';
+      if (a.tagName === 'BUTTON') return 'CLICK';
+      return 'GO \u2192';
+    };
+    const type = (s) => {
+      if (s === label) return;
+      label = s;
+      clearInterval(typeT);
+      if (!s) { txt.textContent = ''; return; }
+      if (reduce) { txt.textContent = s; return; }
+      let i = 0; txt.textContent = '';
+      typeT = setInterval(() => { i++; txt.textContent = s.slice(0, i); if (i >= s.length) clearInterval(typeT); }, 34);
+    };
+    const paint = () => {
+      const ink = dark ? '#fff' : PURPLE;
+      body.style.opacity = pill ? '1' : '0';
+      body.style.background = ink;
+      txt.style.color = dark ? PURPLE : '#fff';
+      caret.style.background = dark ? PURPLE : '#fff';
+      const s = pill ? 14 : 10;
+      dot.style.width = s + 'px'; dot.style.height = s + 'px'; dot.style.margin = (-s / 2) + 'px 0 0 ' + (-s / 2) + 'px';
+      dot.style.background = ink;
+      dot.style.boxShadow = pill ? '0 0 0 4px ' + (dark ? 'rgba(255,255,255,.28)' : 'rgba(86,5,145,.18)') : '0 0 0 0 rgba(86,5,145,0)';
+    };
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target;
+      if (!t || !t.closest) return;
+      dark = isDark(t);
+      const a = t.closest('a,button,.zp-tile,.zw-card,[data-cursor]');
+      pill = !!a;
+      type(a ? labelFor(a) : '');
+      paint();
+    });
+    paint();
+    const loop = (now) => {
+      px += (mx - px) * (reduce ? 1 : 0.2); py += (my - py) * (reduce ? 1 : 0.2);
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) scale(' + (down ? 0.7 : 1) + ')';
+      body.style.transform = 'translate(' + (px + 16) + 'px,' + (py + 14) + 'px) scale(' + (pill ? (down ? 0.92 : 1) : 0.7) + ')';
+      caret.style.opacity = Math.floor(now / 530) % 2 === 1 && txt.textContent === label ? '0' : '1';
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
   }
 
   componentWillUnmount() {
