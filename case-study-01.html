@@ -20,10 +20,11 @@ a{color:#560591;text-decoration:none}
 a:hover{color:#17151a}
 ::selection{background:#560591;color:#fff}
 @keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
-@media (hover:hover) and (pointer:fine){body,body a,body button{cursor:none}}
+@media (hover:hover) and (pointer:fine){html.zx-on body,html.zx-on body *{cursor:none!important}}
 
 @media (max-width:820px){
   [data-m-unstick]{position:static!important;top:auto!important}
+  [data-m-stack]{grid-template-columns:minmax(0,1fr)!important}
   [data-m-hero]{height:auto!important;min-height:0!important;aspect-ratio:4/3}
   [style*="grid-column: span 2"],[style*="grid-column:span 2"]{grid-column:auto!important}
 }
@@ -45,7 +46,9 @@ a:hover{color:#17151a}
     <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
     <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
   </div>
-  <div id="zx-cur-dot" style="position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#560591;box-shadow:0 0 0 0 rgba(86,5,145,0);transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
+  
+  
+  <div id="zx-cur-dot" style="position: absolute;left:0;top:0; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #560591; box-shadow: 0 0 0 0 rgba(86,5,145,0); transition: width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
 </div>
 <div id="zc-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
 
@@ -88,7 +91,7 @@ a:hover{color:#17151a}
       <div data-r="" data-d="3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin-top:20px">
         <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">ROLE</div><div style="font:500 16px/1.4 'Karla',sans-serif">UX Designer</div></div>
         <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TEAM</div><div style="font:500 16px/1.4 'Karla',sans-serif">Product Manager, Engineers, UX Designer, Account Team</div></div>
-        <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TIMELINE</div><div style="font:500 16px/1.4 'Karla',sans-serif">3 months</div></div>
+        <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TIMELINE</div><div style="font: 500 16px/1.4 'Karla',sans-serif; position: relative">3 months</div></div>
         <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">STATUS</div><div style="font:500 16px/1.4 'Karla',sans-serif">Shipped, now scaled to 300 stores</div></div>
       </div>
     </div>
@@ -107,8 +110,8 @@ a:hover{color:#17151a}
         <div data-r="" data-d="1" style="font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">What the challenge was</div>
       </div>
       <div style="grid-column:span 2;display:flex;flex-direction:column;gap:26px;max-width:60ch">
-        <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">In the restaurant stores, <strong style="font-weight:700;color:#560591">equipment failures</strong> weren’t rare exceptions, they were part of daily operations. Fryers overheated, shake machines malfunctioned, grills stopped mid-service. Every time this happened, the response was almost automatic: <strong style="font-weight:700;color:#560591">call an engineer</strong>.</p>
-        <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Across the UK, this translated into thousands of <strong style="font-weight:700;color:#560591">reactive maintenance incidents</strong> each year and <strong style="font-weight:700;color:#560591">millions spent</strong> on fixing equipment. Stores <strong style="font-weight:700;color:#560591">lost revenue</strong> due to downtime, while frontline staff faced <strong style="font-weight:700;color:#560591">mounting pressure</strong> to get operations running again.</p>
+        <p data-r="" style="margin: 0; font: 400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif; color: rgba(23,21,26,.8); position: relative">In the restaurant stores, <strong style="font-weight:700;color:#560591">equipment failures</strong> weren’t rare exceptions, they were part of daily operations. Fryers overheated, shake machines malfunctioned, grills stopped mid-service. Every time this happened, the response was almost automatic: <strong style="font-weight:700;color:#560591">call an engineer</strong>.</p>
+        <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Across the UK, this translated into thousands of <strong style="font-weight:700;color:#560591">reactive maintenance incidents</strong> each year and <strong style="font-weight:700;color:#560591">millions spent</strong> on fixing equipment.&nbsp;</p>
         <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Reactive maintenance was costing the client <strong style="font-weight:700;color:#560591">£8.2M</strong> a year, plus <strong style="font-weight:700;color:#560591">5,500 hours</strong> of store closures and <strong style="font-weight:700;color:#560591">£700k</strong> in lost sales from equipment breakdowns. And the figure was climbing <strong style="font-weight:700;color:#560591">10%</strong> year on year.</p>
       </div>
     </div>
@@ -121,18 +124,18 @@ a:hover{color:#17151a}
         <div data-r="" data-d="1" style="font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:14ch">The mental models we found</div>
       </div>
       <div style="grid-column:span 2;display:flex;flex-direction:column;gap:32px">
-        <p data-r="" style="margin:0;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Together with the product team, I ran <strong style="font-weight:700;color:#560591">user research</strong> with store managers to understand why they were raising engineering tickets for <strong style="font-weight:700;color:#560591">fixes they could often handle themselves</strong>, and what they believed the right response to a breakdown was.</p>
+        <p data-r="" style="margin:0;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Together with the product team, I ran <strong style="font-weight:700;color:#560591">user research</strong> with store managers to understand why they were raising engineering tickets for <strong style="font-weight:700;color:#560591">fixes they could often handle themselves.</strong></p>
         <div data-r="" data-d="3" style="display:flex;flex-direction:column;gap:22px;max-width:60ch;margin-top:12px">
           <h3 style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#17151a">When equipment fails, there's no playbook.</h3>
-          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Frontline restaurant managers had one option when equipment broke: <strong style="font-weight:700;color:#560591">call an engineer</strong>. Costly, slow, and stressful. The troubleshooting <strong style="font-weight:700;color:#560591">knowledge existed</strong>, <strong style="font-weight:700;color:#560591">buried</strong> in hundreds of pages of <strong style="font-weight:700;color:#560591">technical manuals</strong> no one had time to search through during a live incident.</p>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Frontline restaurant managers had one option when equipment broke: <strong style="font-weight:700;color:#560591">call an engineer</strong>. The troubleshooting <strong style="font-weight:700;color:#560591">knowledge existed</strong>, <strong style="font-weight:700;color:#560591">buried</strong> in hundreds of pages of <strong style="font-weight:700;color:#560591">technical manuals</strong> no one had time to search through during a live incident.</p>
         </div>
         <blockquote data-r="" style="margin:0;padding:clamp(28px,4vw,48px);border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:18px">
           <p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#560591;text-wrap:pretty">"In 10 - 60% of cases, the issues could actually be fixed by the store manager if they had access to the right information at the right time."</p>
           <footer style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.6)">That's what the store managers told us.</footer>
         </blockquote>
         <div data-r="" style="display:flex;flex-direction:column;gap:22px;max-width:60ch;margin-top:12px">
-          <h3 style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#17151a">The hard part wasn't the interface. It was where it would be used.</h3>
-          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">A <strong style="font-weight:700;color:#560591">stressed manager</strong>, standing at a <strong style="font-weight:700;color:#560591">broken machine</strong>, <strong style="font-weight:700;color:#560591">one hand occupied</strong>, <strong style="font-weight:700;color:#560591">customers waiting</strong>. The design had to work for them right there.</p>
+          <h3 style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;color:#17151a">For the store manager, it wasn't about the costs incurred, it was about the pressure they felt</h3>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">A <strong style="font-weight:700;color:#560591">stressed manager</strong>, standing at a <strong style="font-weight:700;color:#560591">broken machine</strong>, <strong style="font-weight:700;color:#560591">one hand occupied</strong>, <strong style="font-weight:700;color:#560591">customers waiting</strong>. The <b style="font-weight:700;color:#560591">frustrated manager</b> did not have the <b style="font-weight:700;color:#560591">time or the patience</b> to <b style="font-weight:700;color:#560591">go through</b> the <b style="font-weight:700;color:#560591">manuals and attempt to fix</b> the machinery.&nbsp;</p>
         </div>
       </div>
     </div>
@@ -141,7 +144,7 @@ a:hover{color:#17151a}
   <section data-screen-label="03 The insight" style="padding:0 28px 120px">
     <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,88px);border-radius:20px;background:#560591;color:#fff;display:flex;flex-direction:column;gap:26px">
       <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.72)">03 — THE INSIGHT</div>
-      <p data-r="" data-d="1" style="margin:0;font:700 clamp(24px,3.74vw,58px)/1.06 'Bricolage Grotesque',sans-serif;letter-spacing:-.035em;max-width:24ch;text-wrap:pretty">Managers weren't missing the information, they were missing the next step</p>
+      <p data-r="" data-d="1" style="margin:0;font:700 clamp(24px,3.74vw,58px)/1.06 'Bricolage Grotesque',sans-serif;letter-spacing:-.035em;max-width:24ch;text-wrap:pretty"><span style="opacity: 0.18; transition: opacity 0.25s linear;">Managers</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">weren't</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">missing</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">the</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">information on how to fix,</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">they</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">were</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">missing</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">the</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">next</span> <span style="opacity: 0.18; transition: opacity 0.25s linear;">step</span></p>
     </div>
   </section>
 
@@ -163,7 +166,7 @@ a:hover{color:#17151a}
             <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Managers <strong style="font-weight:700;color:#560591">ask a question</strong>, and the <strong style="font-weight:700;color:#560591">bot responds</strong>, with sources and follow-ups.</p>
           </div>
           <div data-r="" data-d="2" style="display:flex;flex-direction:column;gap:18px;margin-top:8px">
-            <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">When <strong style="font-weight:700;color:#560591">tested</strong> with the <strong style="font-weight:700;color:#560591">store managers</strong>, <strong style="font-weight:700;color:#560591">two gaps</strong> emerged. Managers still had to know <strong style="font-weight:700;color:#560591">what to ask</strong>, and a <strong style="font-weight:700;color:#560591">paragraph of text</strong> is <strong style="font-weight:700;color:#560591">hard to act</strong> on mid-repair.</p>
+            <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">When <strong style="font-weight:700;color:#560591">tested</strong> with the <strong style="font-weight:700;color:#560591">store managers</strong>, <strong style="font-weight:700;color:#560591">two gaps</strong> emerged. Managers still had to know <strong style="font-weight:700;color:#560591">what to ask</strong>, and a <strong style="font-weight:700;color:#560591">paragraph of text</strong> is <strong style="font-weight:700;color:#560591">hard to act</strong> on mid-shift.</p>
           </div>
           <figure data-r="" style="margin:8px 0 0;display:flex;flex-direction:column;gap:12px">
             <div style="position:relative;aspect-ratio:2426/2502;width:min(100%,480px);border-radius:20px;overflow:hidden;background:#fff;transform:translateZ(0)"><img src="./assets/case01-poc-chatbot.png" alt="Ops Buddy chatbot screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block"></div>
@@ -179,7 +182,7 @@ a:hover{color:#17151a}
         </div>
         <div style="grid-column:span 2;display:flex;flex-direction:column;gap:26px">
           <div style="max-width:62ch;display:flex;flex-direction:column;gap:26px">
-            <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)"><strong style="font-weight:700;color:#560591">User feedback</strong> moved us away from a <strong style="font-weight:700;color:#560591">chatbot</strong> and towards a <strong style="font-weight:700;color:#560591">troubleshooting tool</strong> that went <strong style="font-weight:700;color:#560591">beyond chat</strong>. Managers can send <strong style="font-weight:700;color:#560591">text and voice queries</strong>, <strong style="font-weight:700;color:#560591">images and videos</strong>, and it <strong style="font-weight:700;color:#560591">responds</strong> with a <strong style="font-weight:700;color:#560591">step by step</strong> fix, shown with <strong style="font-weight:700;color:#560591">images and videos</strong>.</p>
+            <p data-r="" style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)"><strong style="font-weight:700;color:#560591">User feedback</strong> moved us away from a <strong style="font-weight:700;color:#560591">chatbot</strong> and towards a <strong style="font-weight:700;color:#560591">troubleshooting tool</strong> that went <strong style="font-weight:700;color:#560591">beyond chat</strong>. <br><br>Managers can send <strong style="font-weight:700;color:#560591">text and voice queries</strong>, <strong style="font-weight:700;color:#560591">images and videos</strong>, and it <strong style="font-weight:700;color:#560591">responds</strong> with a <strong style="font-weight:700;color:#560591">step by step</strong> fix, shown with <strong style="font-weight:700;color:#560591">images and videos</strong>.</p>
           </div>
           <div data-r="" data-d="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px">
           <div style="padding:26px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:14px">
@@ -448,18 +451,18 @@ a:hover{color:#17151a}
       <div style="grid-column:span 2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px">
         <div data-r="" style="padding:28px;border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:14px">
           <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">01</div>
-          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">I'd test the interface sooner.</div>
-          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">We spent the early weeks proving the manuals could give accurate answers. That was the right first step, but I'd have put a rough screen in front of a manager at a real fryer much sooner. <strong style="font-weight:700;color:#560591">How the help arrived</strong> mattered just as much as whether it was right.</p>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">I'd test the solution sooner.</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">We spent the early weeks proving the working on a <b style="font-weight:700;color:#560591">chatbot solution</b> that was not the best solution. It was the right first step, but I'd have <b style="font-weight:700;color:#560591">put a rough iteration in front of the users sooner</b>. <b style="font-weight:700;color:#560591">User feedback</b> changed the solution direction completely.&nbsp;</p>
         </div>
         <div data-r="" data-d="1" style="padding:28px;border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:14px">
           <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">02</div>
-          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">Getting a step wrong isn't a small mistake.</div>
-          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">A bad chatbot reply wastes a minute. A bad step on a shake machine can break it or hurt someone. Next time I'd give the <strong style="font-weight:700;color:#560591">checking process</strong> behind each step, who signs it off and how quickly a fix reaches every store, the same care I gave the screens.</p>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">Even a single wrong step isn't a small mistake.</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">A <b style="font-weight:700;color:#560591">wrong response</b> not only wastes time, but <b style="font-weight:700;color:#560591">risks hurting the manager or the machine</b>. Next time I'd give importance to the <b style="font-weight:700;color:#560591">validation</b><strong style="font-weight:700;color:#560591">&nbsp;process</strong> behind each step.&nbsp;</p>
         </div>
         <div data-r="" data-d="2" style="padding:28px;border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:14px">
           <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">03</div>
-          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">I'd flag the risky steps up front.</div>
-          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">Some steps mean touching hot oil or live wiring, and the guide treated them like any other step. I'd go through <strong style="font-weight:700;color:#560591">every step for safety</strong>, mark the risky ones clearly and tell managers what to watch out for before they start, not after.</p>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">I'd flag the risks associated with the steps up front.</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">Some steps mean touching hot oil or live wiring, and in the next iteration I'd go through <strong style="font-weight:700;color:#560591">every step for safety</strong>, <b style="font-weight:700;color:#560591">mark the risky ones clearly</b> and tell managers what to <b style="font-weight:700;color:#560591">watch out for</b> before they start, not after.</p>
         </div>
       </div>
     </div>
@@ -810,13 +813,22 @@ class Component extends DCLogic {
     const dot = document.getElementById('zx-cur-dot');
     if (!root || !body || !txt || !caret || !dot) return;
     this._cursorOn = true;
+    if (body.parentElement !== root) root.appendChild(body);
+    if (dot.parentElement !== root) root.appendChild(dot);
+    if (root.parentElement !== document.body) document.body.appendChild(root);
+    [root, body, dot].forEach((el) => { el.style.left = '0px'; el.style.top = '0px'; el.style.right = ''; el.style.bottom = ''; el.style.translate = ''; });
+    root.style.position = 'fixed';
+    dot.style.left = '0px';
+    const on = () => { document.documentElement.classList.add('zx-on'); root.style.opacity = '1'; };
+    const off = () => { document.documentElement.classList.remove('zx-on'); root.style.opacity = '0'; };
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
     let pill = false, label = '', typeT = null, down = false, dark = false;
     const PURPLE = '#560591';
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; root.style.opacity = '1'; });
-    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) root.style.opacity = '0'; });
-    document.addEventListener('mouseover', () => { root.style.opacity = '1'; });
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; if (!px || !py) { px = mx; py = my; } on(); });
+    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) off(); });
+    addEventListener('blur', off);
+    addEventListener('pagehide', off);
     addEventListener('mousedown', () => { down = true; });
     addEventListener('mouseup', () => { down = false; });
     const isDark = (el) => {

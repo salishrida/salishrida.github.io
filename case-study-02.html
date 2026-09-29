@@ -20,10 +20,11 @@ a{color:#560591;text-decoration:none}
 a:hover{color:#17151a}
 ::selection{background:#560591;color:#fff}
 @keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
-@media (hover:hover) and (pointer:fine){body,body a,body button{cursor:none}}
+@media (hover:hover) and (pointer:fine){html.zx-on body,html.zx-on body *{cursor:none!important}}
 
 @media (max-width:820px){
   [data-m-unstick]{position:static!important;top:auto!important}
+  [data-m-stack]{grid-template-columns:minmax(0,1fr)!important}
   [data-m-hero]{height:auto!important;min-height:0!important;aspect-ratio:4/3}
   [style*="grid-column: span 2"],[style*="grid-column:span 2"]{grid-column:auto!important}
 }
@@ -45,7 +46,8 @@ a:hover{color:#17151a}
     <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
     <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
   </div>
-  <div id="zx-cur-dot" style="position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#560591;box-shadow:0 0 0 0 rgba(86,5,145,0);transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
+  
+  <div id="zx-cur-dot" style="position: absolute;left:0;top:0; width: 10px; height: 10px; margin: -5px 0px 0px -5px; border-radius: 50%; background: rgb(255, 255, 255); box-shadow: rgb(86, 5, 145) 0px 0px 0px 2px, rgba(23, 21, 26, 0.35) 0px 1px 6px; transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1), margin 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s, box-shadow 0.3s; transform: translate(427px, 534px) scale(1)"></div>
 </div>
 <div id="zc-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
 
@@ -67,66 +69,78 @@ a:hover{color:#17151a}
 <section id="top" data-screen-label="Case intro" style="padding:clamp(130px,19vh,180px) 28px 0">
   <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
     <div data-r="" style="display:flex;flex-wrap:wrap;gap:8px;padding-right:60px"><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif"><span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Case 02 · 2025</span><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">Hyper-personalisation</span><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">Luxury retail</span></div>
-    <h1 style="margin:0;font:700 clamp(32px,4.76vw,78px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:20ch;text-wrap:balance">Reducing product discovery drop off <span style="color:#560591">10%</span> across a 500 customer pilot</h1>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;margin-top:48px">
+    <h1 style="margin:0;font:700 clamp(32px,4.76vw,78px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:20ch;text-wrap:balance">Reducing product discovery drop off <span style="color:#560591">10%</span> across a <span style="color:#560591">500 customer pilot</span></h1>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); gap: 40px; margin-top: 48px; position: relative">
       <div data-r="" data-d="2" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55);padding-top:6px">OVERVIEW</div>
-      <p data-r="" data-d="2" style="margin:0;grid-column:span 2;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8);text-wrap:pretty">Leveraging Gen AI to help a luxury fashion brand enhance their customer experience through hyper-personalised experience, reducing product discovery drop off rate by 10%</p>
+      <p data-r="" data-d="2" style="margin:0;grid-column:span 2;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8);text-wrap:pretty">Leveraging <b style="font-weight:700;color:#560591">Gen AI </b>to help a luxury fashion brand enhance their<b style="font-weight:700;color:#560591"> customer experience</b> through <b style="font-weight:700;color:#560591">hyper-personalised experience</b>, <b style="font-weight:700;color:#560591">reducing product discovery drop off rate by 10%</b></p>
     </div>
   </div>
 </section>
 
-<section data-screen-label="Case meta" style="padding:40px 28px 72px">
+<section data-screen-label="Case meta" style="padding:56px 28px 88px">
   <div data-r="" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
-    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">ROLE</div><div style="font:500 16px/1.4 'Karla',sans-serif">UX Designer</div></div>
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font: 500 10px/1 'JetBrains Mono',monospace; letter-spacing: .14em; color: rgba(23,21,26,.55); position: relative">ROLE</div><div style="font:500 16px/1.4 'Karla',sans-serif">UX Designer</div></div>
     <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TEAM</div><div style="font:500 16px/1.4 'Karla',sans-serif">Product Manager, UX Designer, Engineers, Ecosystem Partners, Account Managers</div></div>
-    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TIMELINE</div><div style="font:500 16px/1.4 'Karla',sans-serif">2 months</div></div>
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TIMELINE</div><div style="font:500 16px/1.4 'Karla',sans-serif">6 months</div></div>
     <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">STATUS</div><div style="font:500 16px/1.4 'Karla',sans-serif">Shipped, 500 customer pilot</div></div>
   </div>
 </section>
 
 <section data-screen-label="Case hero image" style="padding:0 28px 130px">
   <div data-r="" style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:stretch">
-    <div style="flex:2 1 520px;min-width:0"><div style="position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);"><image-slot id="zc2-hero" shape="rect" placeholder="Hero shot — the final interface" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
-    <div style="flex:1 1 260px;min-width:0;display:flex"><div style="position:relative;aspect-ratio:auto;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);flex:1;min-height:260px;"><image-slot id="zc2-hero-detail" shape="rect" placeholder="Detail — a key screen on mobile" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
+    <div style="flex:2 1 520px;min-width:0"><div style="position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);"><img src="./assets/case02-hero-atelier-v2.jpg" alt="Atelier app screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div></div>
+    <div style="flex:1 1 260px;min-width:0;display:flex"><div style="position:relative;aspect-ratio:auto;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);flex:1;min-height:260px;"><img src="./assets/cs02/hero-detail.png" alt="Atelier home screen detail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;background:#000;display:block"></div></div>
   </div>
 </section>
 
 <section data-screen-label="01 The moment" style="padding:0 28px 130px">
-  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
-    <div style="display:flex;flex-direction:column;gap:22px">
+  <div data-m-stack="" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(28px,5vw,80px);align-items:start">
+    <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:22px">
       <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">01 — THE MOMENT</div>
-      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:18ch">Where it broke, and who felt it.</h2>
+      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:18ch">What was the client challenge?</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:40px">
       <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:16px;padding-top:22px;border-top:1px solid rgba(23,21,26,.14)">
         <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">THE SCENE</div>
-        <p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Set the scene: who was doing what, when it broke, and why it mattered to the business. Placeholder.]</p>
+        <p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.2 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a;text-wrap:pretty">Walk into a flagship boutique and a stylist already knows your occasion, your wardrobe, and the two pieces that complete your look. Open the same brand's app and you get a catalogue of thousands of products and a filter bar.</p>
       </div>
       <div data-r="" data-d="2" style="display:flex;flex-direction:column;gap:16px;padding-top:22px;border-top:1px solid rgba(23,21,26,.14)">
         <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">THE BRIEF</div>
-        <p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[The brief you were handed, and how it differed from the real problem. Placeholder.]</p>
+        <p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">A <strong style="font-weight:700;color:#560591">luxury fashion</strong> brand sought to <strong style="font-weight:700;color:#560591">replicate its in store luxury experience</strong> into its <strong style="font-weight:700;color:#560591">digital platform</strong>. The brand's digital channels were <strong style="font-weight:700;color:#560591">driving traffic</strong> but not <strong style="font-weight:700;color:#560591">loyalty</strong>.</p>
+        <p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">The brief wasn't to build a better recommendation engine. It was to <strong style="font-weight:700;color:#560591">build a relationship</strong>.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section data-screen-label="02 What I found" style="padding:0 28px 130px">
-  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,5vw,80px);align-items:end">
-      <div style="display:flex;flex-direction:column;gap:22px">
+  <div data-m-stack="" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(28px,5vw,80px);align-items:start">
+    <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:22px">
         <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">02 — WHAT I FOUND</div>
-        <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:14ch">Where discovery lost them.</h2>
+        <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:14ch">What I researched</h2>
       </div>
-      <p data-r="" data-d="2" style="margin:0;max-width:52ch;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[How you learned it — interviews, shadowing, ticket analysis — and the pattern that came out. Placeholder.]</p>
+    <div style="min-width:0;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+      <div style="display:flex;flex-direction:column;gap:18px"><p data-r="" data-d="2" style="margin: 0; max-width: 52ch; font: 700 clamp(19px,1.87vw,27px)/1.2 'Bricolage Grotesque',sans-serif; letter-spacing: -.02em; color: #17151a; position: relative">The market wasn't asking for better e-commerce. It was asking for a fundamentally different relationship with digital retail.</p><p style="margin:0;max-width:52ch;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)"><strong style="font-weight:700;color:#560591">Problem discovery</strong> was <strong style="font-weight:700;color:#560591">desk-based</strong>: a <strong style="font-weight:700;color:#560591">competitive audit</strong> of different luxury houses and mass-market leaders, a <strong style="font-weight:700;color:#560591">review of market</strong> and generational research, <strong style="font-weight:700;color:#560591">analysis</strong> of <strong style="font-weight:700;color:#560591">customer reviews</strong> on different platforms and a synthesis of recurring breakdowns in current experiences.</p></div>
+      <div data-r="" data-d="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:28px;padding:clamp(26px,3.4vw,40px);border-radius:20px;background:#F3ECFA">
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">70%</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">Consumers say they are more loyal to brands with a strong digital presence</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">60%</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">Online shoppers abandon their carts due to lack of personalised experience</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">70%</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">Global luxury market is made of millennials and Gen Z customers</div></div>
     </div>
-    <div data-r="" data-d="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:28px;padding:clamp(26px,3.4vw,40px);border-radius:20px;background:#F3ECFA">
-      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">[N]</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">[What this number measures]</div></div>
-      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">[N]</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">[What this number measures]</div></div>
-      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:600 clamp(34px,3.6vw,54px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;color:#560591">[N]</div><div style="font:400 15px/1.5 'Karla',sans-serif;color:rgba(23,21,26,.72);max-width:24ch">[What this number measures]</div></div>
+      <div style="display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div data-r="" style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.2 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">Existing personalisation was aimed at the product, not the moment.</p>
+        <p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Existing personalisation like <strong style="font-weight:700;color:#560591">virtual try-ons</strong>, <strong style="font-weight:700;color:#560591">chatbots</strong>, data-driven <strong style="font-weight:700;color:#560591">product recommendations</strong>, <strong style="font-weight:700;color:#560591">virtual store tours</strong> and livestreams, each helped a client assess something to buy. None of it knew what the client was <strong style="font-weight:700;color:#560591">getting dressed for</strong>.</p>
+      </div>
+      <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.2 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a">Four specific gaps emerged</p>
+        <div style="display:flex;flex-direction:column;border-bottom:1px solid rgba(23,21,26,.14)">
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid rgba(23,21,26,.14)"><span style="font:500 12px/1.9 'JetBrains Mono',monospace;color:#560591">01</span><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">No integration with a customer's real-life context such as events, travel, or weather</p></div>
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid rgba(23,21,26,.14)"><span style="font:500 12px/1.9 'JetBrains Mono',monospace;color:#560591">02</span><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Personalisation logic that was shallow and session-based rather than continuous</p></div>
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid rgba(23,21,26,.14)"><span style="font:500 12px/1.9 'JetBrains Mono',monospace;color:#560591">03</span><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">No mechanism for connecting a customer's existing wardrobe to future purchase decisions</p></div>
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid rgba(23,21,26,.14)"><span style="font:500 12px/1.9 'JetBrains Mono',monospace;color:#560591">04</span><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">The social, collaborative dimensions of luxury shopping entirely absent from digital channels</p></div>
+        </div>
+      </div>
     </div>
-    <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:12px;align-items:stretch">
-      <figure style="margin:0;display:flex;flex-direction:column;gap:12px;flex:2 1 520px;min-width:0"><div style="position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);"><image-slot id="zc2-research-1" shape="rect" placeholder="Research artefact — map, affinity wall, ticket audit" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">[CAPTION]</figcaption></figure>
-      <figure style="margin:0;display:flex;flex-direction:column;gap:12px;flex:1 1 260px;min-width:0"><div style="position:relative;aspect-ratio:auto;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0);flex:1;min-height:260px;"><image-slot id="zc2-research-2" shape="rect" placeholder="Research artefact" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">[CAPTION]</figcaption></figure>
     </div>
   </div>
 </section>
@@ -142,14 +156,14 @@ a:hover{color:#17151a}
   <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
     <div style="display:flex;flex-direction:column;gap:22px">
       <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">04 — WHAT I DESIGNED</div>
-      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:20ch">Three decisions, and what they cost.</h2>
+      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:20ch">Three key decisions I made</h2>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);align-items:center">
       <div data-r="" style="flex:3 1 480px;min-width:0">
         <div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)">
-          <div data-acc-screen="0" style="position:absolute;inset:0;opacity:1;transition:opacity .6s ease;pointer-events:auto"><image-slot id="zc2-screen-1" shape="rect" placeholder="Screen 01" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
-          <div data-acc-screen="1" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none"><image-slot id="zc2-screen-2" shape="rect" placeholder="Screen 02" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
-          <div data-acc-screen="2" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none"><image-slot id="zc2-screen-3" shape="rect" placeholder="Screen 03" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+          <div data-acc-screen="0" style="position:absolute;inset:0;opacity:1;transition:opacity .6s ease;pointer-events:auto"><img src="./assets/cs02/decision-01.png" alt="Atelier event-led home screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;display:block"></div>
+          <div data-acc-screen="1" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none"><img src="./assets/cs02/decision-02.png" alt="Atelier wardrobe and product screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;display:block"></div>
+          <div data-acc-screen="2" style="position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none"><img src="./assets/cs02/decision-03.png" alt="Atelier moodboard screen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;display:block"></div>
         </div>
       </div>
       <div data-r="" data-d="1" style="flex:2 1 320px;min-width:0;display:flex;flex-direction:column;border-bottom:1px solid rgba(23,21,26,.14)">
@@ -159,7 +173,7 @@ a:hover{color:#17151a}
               <span data-acc-title="" style="font:600 clamp(18px,1.7vw,24px)/1.25 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a;transition:color .3s ease">Event led product discovery</span>
               <span data-acc-icon="" style="font:400 20px/1 'Karla',sans-serif;color:#17151a;transition:transform .4s cubic-bezier(.22,1,.36,1)">+</span>
             </span>
-            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">[Why this, and what you rejected to get here. Reasoning, not a caption. Placeholder.]</span></span></span>
+            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">Users land in an event led homepage, not a homepage catalogue: upcoming events from their calendar, read against real-time context. The event card shows everything: weather, location, wardrobe gaps, all weighed at once to surface exactly what the occasion calls for.</span></span></span>
           </button>
           <button type="button" data-acc="1" style="all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:0;padding:22px 0;border-top:1px solid rgba(23,21,26,.14);cursor:pointer;width:100%">
             <span style="display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:10px;align-items:baseline">
@@ -167,57 +181,43 @@ a:hover{color:#17151a}
               <span data-acc-title="" style="font:600 clamp(18px,1.7vw,24px)/1.25 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a;transition:color .3s ease">Wardrobe gap analysis to help users discover exactly what they are missing</span>
               <span data-acc-icon="" style="font:400 20px/1 'Karla',sans-serif;color:#17151a;transition:transform .4s cubic-bezier(.22,1,.36,1)">+</span>
             </span>
-            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">[Placeholder.]</span></span></span>
+            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">For every occasion, the system calculates the proportion of an ideal outfit the user already has. An 80% score doesn't send someone shopping, it says you're nearly there, and surfaces the one or two missing pieces. Browsing becomes completing. The upsell logic inverts: not "something you might like," but "the piece that finishes what you have."</span></span></span>
           </button>
           <button type="button" data-acc="2" style="all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:0;padding:22px 0;border-top:1px solid rgba(23,21,26,.14);cursor:pointer;width:100%">
             <span style="display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:10px;align-items:baseline">
               <span style="font:500 12px/1 'JetBrains Mono',monospace;color:#560591">03</span>
-              <span data-acc-title="" style="font:600 clamp(18px,1.7vw,24px)/1.25 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a;transition:color .3s ease">Mood board integration and collaboration</span>
+              <span data-acc-title="" style="font:600 clamp(18px,1.7vw,24px)/1.25 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:#17151a;transition:color .3s ease">Make styling social</span>
               <span data-acc-icon="" style="font:400 20px/1 'Karla',sans-serif;color:#17151a;transition:transform .4s cubic-bezier(.22,1,.36,1)">+</span>
             </span>
-            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">[Placeholder.]</span></span></span>
+            <span data-acc-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)"><span style="overflow:hidden"><span style="display:block;padding:14px 0 0 50px;font:400 16px/1.6 'Karla',sans-serif;color:rgba(23,21,26,.72)">Moodboards have collaborators, shown as initials on the board with a button to invite more, so a brunch look or a trip wardrobe can be settled with the people going.</span></span></span>
           </button>
       </div>
     </div>
   </div>
 </section>
 
-<section data-screen-label="05 Trade-offs" style="padding:0 28px 130px">
-  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
-    <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:clamp(20px,3vw,40px)">
-      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">05 — TRADE-OFFS</div>
-      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:16ch">What I gave up to ship.</h2>
-    </div>
-    <div data-r="" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));border-radius:20px;overflow:hidden;border:1px solid rgba(23,21,26,.12)">
-        <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px;background:#fff"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">CHOSE</div><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[What you shipped. Placeholder.]</p></div>
-        <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px;background:#F3ECFA"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">GAVE UP</div><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[What it cost, and why that was acceptable. Placeholder.]</p></div>
-      </div>
-    <div data-r="" data-d="1" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));border-radius:20px;overflow:hidden;border:1px solid rgba(23,21,26,.12)">
-        <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px;background:#fff"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">CHOSE</div><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Placeholder.]</p></div>
-        <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px;background:#F3ECFA"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">GAVE UP</div><p style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Placeholder.]</p></div>
-      </div>
-  </div>
-</section>
-
-<section data-screen-label="06 Outcome" style="padding:0 28px 130px">
+<section data-screen-label="05 Outcome" style="padding:0 28px 130px">
   <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column">
     <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:clamp(24px,3vw,40px)">
-      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">06 — OUTCOME</div>
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">05 — OUTCOME</div>
     </div>
     <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 40px;align-items:center;padding:clamp(20px,2.6vw,32px) 0;border-top:1px solid rgba(23,21,26,.14)"><div class="zc-num" data-to="10" data-suffix="%" style="font:600 clamp(56px,8vw,128px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#560591">0%</div><div style="font:400 clamp(17px,1.5vw,21px)/1.45 'Karla',sans-serif;color:rgba(23,21,26,.78)">lower discovery drop off</div></div>
     <div data-r="" data-d="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 40px;align-items:center;padding:clamp(20px,2.6vw,32px) 0;border-top:1px solid rgba(23,21,26,.14)"><div class="zc-num" data-to="500" style="font:600 clamp(56px,8vw,128px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#17151a">0</div><div style="font:400 clamp(17px,1.5vw,21px)/1.45 'Karla',sans-serif;color:rgba(23,21,26,.78)">customers in the pilot</div></div>
-    <div data-r="" data-d="2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 40px;align-items:center;padding:clamp(20px,2.6vw,32px) 0;border-top:1px solid rgba(23,21,26,.14)"><div class="zc-num" data-to="0" style="font:600 clamp(56px,8vw,128px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#17151a">0</div><div style="font:400 clamp(17px,1.5vw,21px)/1.45 'Karla',sans-serif;color:rgba(23,21,26,.78)">[Third metric]</div></div>
-    <div style="padding-top:28px;border-top:1px solid rgba(23,21,26,.14)"><p data-r="" data-d="3" style="margin:0;max-width:60ch;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[How it was measured, over what period, and what you would watch next. Placeholder.]</p></div>
+    <div style="padding-top:28px;border-top:1px solid rgba(23,21,26,.14)"><p data-r="" data-d="3" style="margin:0;max-width:60ch;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">A closed pilot was conducted with <strong style="font-weight:700;color:#560591">500 loyalty customers</strong>, as loyalty customers already had <strong style="font-weight:700;color:#560591">purchase history</strong> and <strong style="font-weight:700;color:#560591">wardrobe context</strong> for the AI to leverage. The solution showcased a <strong style="font-weight:700;color:#560591">10% reduction</strong> in <strong style="font-weight:700;color:#560591">product discovery page drop off rates</strong> across a <strong style="font-weight:700;color:#560591">3 month pilot phase</strong>.</p></div>
   </div>
 </section>
 
-<section data-screen-label="07 My role" style="padding:0 28px 130px">
+<section data-screen-label="06 My role" style="padding:0 28px 130px">
   <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,5vw,80px);align-items:start">
-    <div style="display:flex;flex-direction:column;gap:22px">
-      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">07 — MY ROLE</div>
+    <div data-m-unstick="" style="align-self:start;position:sticky;top:110px;display:flex;flex-direction:column;gap:22px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">06 — MY ROLE</div>
       <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(30px,3.8vw,58px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:12ch">What I owned.</h2>
     </div>
-    <p data-r="" style="margin:0;padding-top:33px;max-width:60ch;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Exactly what you owned, who you worked with, and what you would do differently. Placeholder.]</p>
+    <div style="padding-top:33px;max-width:60ch;display:flex;flex-direction:column;gap:22px">
+      <p data-r="" style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">For this project, I <strong style="font-weight:700;color:#560591">owned the research, solution conceptualisation and the end-to-end design</strong>. The research included <strong style="font-weight:700;color:#560591">competitive audit</strong>, <strong style="font-weight:700;color:#560591">market and segment review</strong>, research on <strong style="font-weight:700;color:#560591">existing personalisation measures</strong> and analysis of <strong style="font-weight:700;color:#560591">customer reviews</strong>.</p>
+      <p data-r="" data-d="1" style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">I then defined the <strong style="font-weight:700;color:#560591">use cases</strong> and the <strong style="font-weight:700;color:#560591">occasion first solution concept</strong>.</p>
+      <p data-r="" data-d="2" style="margin:0;font:400 clamp(17px,1.4vw,20px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">I was also the <strong style="font-weight:700;color:#560591">sole designer</strong> for this project, from working on the <strong style="font-weight:700;color:#560591">user flows</strong> and <strong style="font-weight:700;color:#560591">wireframes</strong> to <strong style="font-weight:700;color:#560591">production ready UI</strong>.</p>
+    </div>
   </div>
 </section>
 
@@ -593,13 +593,22 @@ class Component extends DCLogic {
     const dot = document.getElementById('zx-cur-dot');
     if (!root || !body || !txt || !caret || !dot) return;
     this._cursorOn = true;
+    if (body.parentElement !== root) root.appendChild(body);
+    if (dot.parentElement !== root) root.appendChild(dot);
+    if (root.parentElement !== document.body) document.body.appendChild(root);
+    [root, body, dot].forEach((el) => { el.style.left = '0px'; el.style.top = '0px'; el.style.right = ''; el.style.bottom = ''; el.style.translate = ''; });
+    root.style.position = 'fixed';
+    dot.style.left = '0px';
+    const on = () => { document.documentElement.classList.add('zx-on'); root.style.opacity = '1'; };
+    const off = () => { document.documentElement.classList.remove('zx-on'); root.style.opacity = '0'; };
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
     let pill = false, label = '', typeT = null, down = false, dark = false;
     const PURPLE = '#560591';
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; root.style.opacity = '1'; });
-    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) root.style.opacity = '0'; });
-    document.addEventListener('mouseover', () => { root.style.opacity = '1'; });
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; if (!px || !py) { px = mx; py = my; } on(); });
+    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) off(); });
+    addEventListener('blur', off);
+    addEventListener('pagehide', off);
     addEventListener('mousedown', () => { down = true; });
     addEventListener('mouseup', () => { down = false; });
     const isDark = (el) => {
