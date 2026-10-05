@@ -27,6 +27,7 @@ a:hover{color:#17151a}
 @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (hover:hover) and (pointer:fine){html.zx-on body,html.zx-on body *{cursor:none!important}}
+image-slot{pointer-events:none}
 .zp-tile{transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1),border-color .35s ease}
 .zp-tile:hover .zp-rowtitle{transform:translateX(10px);color:var(--p-deep,#560591)}
 .zp-rowtitle{transition:transform .5s cubic-bezier(.22,1,.36,1),color .3s ease}
@@ -57,13 +58,18 @@ a:hover{color:#17151a}
 @media (max-width:600px){
   [data-m-hide]{display:none!important}
   [data-m-header]{padding:16px 18px!important;gap:12px!important}
-  [data-m-nav]{gap:16px!important;padding:8px 2px!important;font-size:13px!important}
+  [data-m-nav]{gap:16px!important;padding:0 2px!important;font-size:13px!important}
   [data-m-resume]{padding:10px 14px!important}
   [data-m-nav] a{display:inline-flex;align-items:center;min-height:44px}
   [data-m-header]>a{min-height:44px}
-  .zx-resume{padding:12px 14px!important}
+  .zx-resume{padding:12px!important}
+  .zx-resume,[data-m-resume]{min-height:44px;display:inline-flex!important;align-items:center}
+  [data-m-header]>a>span{white-space:nowrap}
+  [data-m-header]>a{gap:8px!important}
+  [data-m-header]>a>span:nth-child(2){letter-spacing:.14em!important}
   [data-m-fade]{height:66%!important;background:linear-gradient(to top,#fff 0%,#fff 38%,rgba(255,255,255,.75) 62%,rgba(255,255,255,0) 100%)!important}
 }
+@media (max-width:385px){[data-m-header]>a>span:nth-child(2){display:none!important}}
 </style>
 </helmet>
 
@@ -72,8 +78,7 @@ a:hover{color:#17151a}
     <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
     <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
   </div>
-  
-  <div id="zx-cur-dot" style="position: absolute;left:0;top:0; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #560591; box-shadow: 0 0 0 0 rgba(86,5,145,0); transition: width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
+  <div id="zx-cur-dot" style="position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#560591;box-shadow:0 0 0 0 rgba(86,5,145,0);transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
 </div>
 
 <div id="zp-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
@@ -176,7 +181,7 @@ a:hover{color:#17151a}
 
   <div id="zp-stack" style="position:relative;height:400svh">
   <div id="zp-stage" style="position:sticky;top:0;height:100svh;overflow:hidden">
-  <a href="./case-study-01.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+  <a href="./ops-buddy.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
     <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
       <img src="./assets/case01-cover-phones.jpg" alt="Ops Buddy app screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
       <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">01</div>
@@ -195,7 +200,7 @@ a:hover{color:#17151a}
     </div>
   </a>
 
-  <a href="./case-study-02.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+  <a href="./atelier.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
     <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
       <img src="./assets/case02-hero-atelier-v3.jpg" alt="Atelier app screens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
       <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">02</div>
@@ -214,7 +219,7 @@ a:hover{color:#17151a}
     </div>
   </a>
 
-  <a href="./case-study-03.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+  <a href="./ecoscope.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
     <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
       <image-slot id="zp-case-3" shape="rect" placeholder="Case 03 hero — product screen" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
       <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">03</div>
@@ -234,7 +239,7 @@ a:hover{color:#17151a}
     </div>
   </a>
 
-  <a href="./case-study-04.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
+  <a href="./mandisathi.html" class="zp-tile" style="display:flex;flex-direction:column;gap:22px;color:inherit;background:#faf9fb;padding:26px 0 0;border-top:1px solid rgba(23,21,26,.16)">
     <div style="position:relative;flex:1 1 0;min-height:200px;overflow:hidden;background:rgba(23,21,26,.05)">
       <image-slot id="zp-case-4" shape="rect" placeholder="Case 04 hero — product screen" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
       <div class="zp-ov" style="position:absolute;left:0;top:0;padding:12px 18px;background:var(--zovbg,rgba(255,255,255,.82));border:var(--zovborder,1px solid rgba(255,255,255,.6));backdrop-filter:blur(var(--zovblur,10px));color:var(--zovink,rgba(23,21,26,.75));text-shadow:var(--zovshadow,none);border-radius:var(--zovradius,0);font:var(--zw,500) clamp(28px,3.2vw,46px)/.8 var(--zd,'Montserrat'),sans-serif;letter-spacing:-.04em;color:var(--znum,#FFFFFF);-webkit-text-stroke:var(--znumstroke,0) var(--znum,#FFFFFF);opacity:var(--znumop,1)">04</div>

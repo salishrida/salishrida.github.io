@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Karla:wght@400;500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./assets/resume-data.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#17151a;font-family:'Karla',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#560591;text-decoration:none}
+a:hover{color:#17151a}
+::selection{background:#560591;color:#fff}
+@keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (hover:hover) and (pointer:fine){html.zx-on body,html.zx-on body *{cursor:none!important}}
+image-slot{pointer-events:none}
+
+@media (max-width:820px){
+  [data-m-unstick]{position:static!important;top:auto!important}
+  [data-m-stack]{grid-template-columns:minmax(0,1fr)!important}
+  [data-m-hero]{height:auto!important;min-height:0!important;aspect-ratio:4/3}
+  [style*="grid-column: span 2"],[style*="grid-column:span 2"]{grid-column:auto!important}
+}
+@media (max-width:600px){
+  [data-m-hide]{display:none!important}
+  [data-m-header]{padding:16px 18px!important;gap:12px!important}
+  [data-m-nav]{gap:16px!important;padding:0 2px!important;font-size:13px!important}
+  [data-m-resume]{padding:10px 14px!important}
+  [data-m-nav] a{display:inline-flex;align-items:center;min-height:44px}
+  [data-m-header]>a{min-height:44px}
+  .zx-resume{padding:12px!important}
+  .zx-resume,[data-m-resume]{min-height:44px;display:inline-flex!important;align-items:center}
+  [data-m-header]>a>span{white-space:nowrap}
+  [data-m-header]>a{gap:8px!important}
+  [data-m-header]>a>span:nth-child(2){letter-spacing:.14em!important}
+  [data-m-fade]{height:66%!important;background:linear-gradient(to top,#fff 0%,#fff 38%,rgba(255,255,255,.75) 62%,rgba(255,255,255,0) 100%)!important}
+}
+@media (max-width:385px){[data-m-header]>a>span:nth-child(2){display:none!important}}
+</style>
+</helmet>
+
+<div id="zx-cur" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:2147483647;pointer-events:none;opacity:0;transition:opacity .3s ease">
+  <div id="zx-cur-body" style="position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 12px;border-radius:999px;background:#560591;opacity:0;transform-origin:0 50%;transition:opacity .25s ease,background .3s ease">
+    <span id="zx-cur-text" style="font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;color:#fff;white-space:nowrap"></span>
+    <span id="zx-cur-caret" style="display:block;width:2px;height:13px;border-radius:2px;background:#fff"></span>
+  </div>
+  <div id="zx-cur-dot" style="position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#560591;box-shadow:0 0 0 0 rgba(86,5,145,0);transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1),margin .3s cubic-bezier(.22,1,.36,1),background .25s ease,box-shadow .3s ease"></div>
+</div>
+
+
+<div id="zc-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:#560591;z-index:90"></div>
+
+<header data-m-header="" id="zc-head" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 14px/1 'Karla',sans-serif;transition:padding .35s cubic-bezier(.22,1,.36,1)">
+  <a href="./index.html" aria-label="Shrida Sali — home" style="display:flex;align-items:center;gap:12px;color:#17151a" style-hover="color:#17151a">
+    <span style="display:flex;align-items:baseline;font:500 30px/1 'JetBrains Mono',monospace;letter-spacing:-.06em;color:#17151a"><span>s</span><span style="color:#560591">/</span><span>s</span><span style="width:.5em;height:.1em;background:#560591;margin-left:.08em;animation:caretBlink 1s step-end infinite"></span></span>
+    <span style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.26em;color:#17151a">SHRIDA SALI</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <nav data-m-nav="" style="display:flex;align-items:center;gap:26px;padding:11px 8px;font-family:'Montserrat',sans-serif">
+      <a href="./work.html" style="color:#560591">Work</a>
+      <a href="./about.html" style="color:#17151a" style-hover="color:#560591">About</a>
+      <a data-m-hide="" href="#contact" style="color:#17151a" style-hover="color:#560591">Contact</a>
+    </nav>
+    <a class="zx-resume" href="./assets/Shrida-Sali-Resume.pdf" target="_blank" rel="noopener" style="padding:12px 20px;border-radius:12px;background:#17151a;color:#fff;font:600 13px/1 'Karla',sans-serif;box-shadow:0 8px 20px rgba(23,21,26,.25)" style-hover="background:#560591;color:#fff">Resume</a>
+  </div>
+</header>
+
+<section id="top" data-screen-label="Case intro" style="padding:clamp(130px,19vh,180px) 28px 0">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+    <div data-r="" style="display:flex;flex-wrap:wrap;gap:8px;padding-right:60px"><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(23,21,26,.12);color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif"><span style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block"></span>Case 04 · 2023</span><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">Service design</span><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">Low-literacy UX</span><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.7);font:500 13px/1 'Karla',sans-serif">Mobile first UX</span></div>
+    <h1 style="margin:0;font:700 clamp(32px,4.76vw,78px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em;max-width:20ch;text-wrap:balance">Potential <span style="color:#560591">30%</span> improvement in farmer income</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;margin-top:48px">
+      <div data-r="" data-d="2" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55);padding-top:6px">OVERVIEW</div>
+      <div data-r="" data-d="2" style="margin:0;grid-column:span 2;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8);text-wrap:pretty"><p dir="auto" data-pm-slice="1 1 []" style="color: #000000CC">MandiSathi was designed around a client hypothesis: <strong>give farmers real-time market visibility and the ability to choose where to sell based on projected net profit, and farmer income could increase by up to 30%</strong>. It brings the farmer, the trader, and the commission agent into one platform: the <b>farmer</b> sees where <b>demand is highest</b> and what their <b>produce is likely to fetch</b> after transport. The <b>trader </b>sees <b>incoming supply volumes and quality grades</b> before the auction begins. The <b>commission agent</b> gets a <b>live operational view</b> of arrivals, disputes, and payments, without a paper trail.</p></div></div>
+  </div>
+</section>
+
+<section data-screen-label="Case hero image" style="padding:64px 28px 0">
+  <div data-r="" style="max-width:1400px;margin:0 auto"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-hero" shape="rect" placeholder="Hero shot — the final service" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
+</section>
+
+<section data-screen-label="Case meta" style="padding:56px 28px 120px">
+  <div data-r="" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">ROLE</div><div style="font:500 16px/1.4 'Karla',sans-serif">User Research, Service Design, Product Design, Interaction Design</div></div>
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TEAM</div><div style="font:500 16px/1.4 'Karla',sans-serif">Startup founders, ecosystem partners, UX Researcher and Designer and Mentor</div></div>
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">TIMELINE</div><div style="font:500 16px/1.4 'Karla',sans-serif">6 months</div></div>
+    <div style="padding:22px;border-radius:20px;background:#f5f3f7;display:flex;flex-direction:column;gap:12px"><div style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(23,21,26,.55)">STATUS</div><div style="font:500 16px/1.4 'Karla',sans-serif">[Status]</div></div>
+  </div>
+</section>
+
+<section data-screen-label="01 The moment" style="padding:0 28px 130px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div style="display:flex;flex-direction:column;gap:16px"><div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">01 — THE MOMENT</div><h2 data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:20ch">What the challenge was</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,5vw,80px);align-items:center">
+      <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">ON PAPER</div>
+        <p style="margin:0;max-width:52ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)"><b>On paper, the supply chain is simple:</b> a farmer grows produce, a trader buys it, a retailer sells it and a consumer takes it home.</p>
+      </div>
+      <figure data-r="" data-d="1" style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-chain" src="https://framerusercontent.com/images/04kA0xSGoy2TnxsUWnyWlXBt0.png" shape="rect" placeholder="The supply chain as we picture it — a simple straight line" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">HOW WE PICTURE IT</figcaption></figure>
+    </div>
+    <div data-r="" style="display:flex;align-items:center;gap:clamp(16px,2vw,28px)">
+      <p style="margin:0;flex:0 0 auto;font:700 clamp(32px,4.4vw,68px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.045em;color:#560591">Except it isn't.</p>
+      <span aria-hidden="true" style="flex:1 1 auto;height:1px;background:rgba(86,5,145,.3)"></span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:center">
+      <figure data-r="" style="margin:0;flex:1.7 1 520px;min-width:0;display:flex;flex-direction:column;gap:10px">
+        <div style="position:relative;aspect-ratio:3420/1924;width:100%;border-radius:20px;overflow:hidden;background:#fff;border:1px solid rgba(23,21,26,.12);transform:translateZ(0)">
+          <img src="./assets/cs04/supply-chain-actual-v2.gif" alt="Animation: the supply chain as it actually runs, from farmer through small traders, logistics and warehousing to the trader" style="position:absolute;left:-0.18%;top:-0.25%;width:100.45%;height:100.45%;max-width:none;object-fit:fill;display:block;background:#fff">
+        </div>
+        <figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">HOW IT ACTUALLY RUNS</figcaption>
+      </figure>
+      <div data-r="" data-d="1" style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:16px">
+        <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">IN PRACTICE</div>
+        <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">In practice, produce passes through <b>several small traders</b> before it<b> reaches a large buyer, and each one takes a cut</b>. It's <strong style="font-weight: 700; color: rgb(86, 5, 145);">one of the longest middleman chains</strong> of any commodity, so <b>farmers</b> end up with a <b>fraction of the final price</b>.</p>
+      </div>
+    </div>
+    <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px"><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PERISHABILITY</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)"><b>Produce spoils fast</b>, so farmers feel pushed to <b>take any price</b> before it goes bad. <b>Buyers leverage&nbsp;perishability</b> to get the produce at lower prices.&nbsp;</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PRICE BLINDNESS</div><p style="margin: 0; font: 400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif; color: rgba(23,21,26,.8); font-weight: 700"><b><span style="font-weight: normal;"><b>Prices fluctuate</b> daily based on </span>supply and demand<span style="font-weight: normal;">, but this information </span>rarely reaches the farmer<span style="font-weight: normal;"> before they reach the market.&nbsp;</span></b></p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">TRUST</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Farmers <b>sell to</b> traders <b>they know because </b>those <b>traders pay</b>. Maybe late, maybe below market, but they pay.</p></div></div>
+    <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,5vw,80px);padding:clamp(26px,3.4vw,44px);border-radius:20px;background:#f5f3f7">
+      <div style="display:flex;flex-direction:column;gap:14px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">THE CLIENT HYPOTHESIS</div><p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Show farmers live market prices and let them choose where to sell based on expected profit, and their income could rise by up to 30%.</p></div>
+      
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 Research process" style="padding:0 28px 130px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,5vw,80px);align-items:end">
+      <div style="display:flex;flex-direction:column;gap:16px"><div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">02 — RESEARCH PROCESS</div><h2 data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:20ch">From system map to service blueprint</h2></div>
+      <p data-r="" data-d="2" style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Six stages, from testing our assumptions to a service blueprint the screens could be built on.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:40px clamp(32px,5vw,72px);align-items:flex-start">
+      <nav data-rrail="" aria-label="Research phases" data-m-unstick="" style="flex:0 1 260px;min-width:220px;position:sticky;top:110px;display:flex;flex-direction:column;border-bottom:1px solid rgba(23,21,26,.12)">
+          <a data-rnav="zc4-phase-1" href="#zc4-phase-1" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">01</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Mapping the system</span></a>
+          <a data-rnav="zc4-phase-2" href="#zc4-phase-2" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">02</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Assumptions</span></a>
+          <a data-rnav="zc4-phase-3" href="#zc4-phase-3" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">03</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Research objectives</span></a>
+          <a data-rnav="zc4-phase-4" href="#zc4-phase-4" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">04</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Farmer profiles</span></a>
+          <a data-rnav="zc4-phase-5" href="#zc4-phase-5" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">05</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Commission agent profiles</span></a>
+          <a data-rnav="zc4-phase-6" href="#zc4-phase-6" style="display:grid;grid-template-columns:14px 34px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(23,21,26,.12);color:rgba(23,21,26,.38);transition:color .35s ease" style-hover="color:#17151a"><span data-rdot="" style="width:7px;height:7px;border-radius:50%;background:#560591;display:inline-block;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.5,.55,1)"></span><span style="font:500 12px/1 'JetBrains Mono',monospace">06</span><span style="font:700 17px/1.3 'Bricolage Grotesque',sans-serif;letter-spacing:-.015em">Service blueprint</span></a>
+      </nav>
+      <div data-rcontent="" style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:clamp(56px,7vw,96px)">
+        <article id="zc4-phase-1" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 01</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Mapping the system</div>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">We started by separating what we knew about each group from what we were only assuming.</p>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">The stakeholder map showed that <strong style="font-weight:700;color:#560591">the farmer has the least power</strong> in the system. Everyone else makes money from their produce, and very few give anything back.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Stakeholder map</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Iceberg model</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-stake" src="https://framerusercontent.com/images/brv5DGXyWNMytEBmeD24yc0YnGw.jpg" shape="rect" placeholder="Stakeholder map and iceberg model" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">STAKEHOLDER MAP AND ICEBERG MODEL</figcaption></figure>
+          <p data-r="" style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">An iceberg model for each group helped us look past what they do to why they do it.</p>
+          <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px"><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;background:#F3ECFA;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">FARMER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Sells locally at low prices because the familiar feels safer than the unknown.</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;background:#F3ECFA;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">TRADER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Offers farmers credit to lock in supply at below-market prices.</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;background:#F3ECFA;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">COMMISSION AGENT</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Stays profitable by controlling who gets access to buyers.</p></div></div>
+          </div>
+        </article>
+        <article id="zc4-phase-2" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 02</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Assumptions</div>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Before the research, we made an <strong style="font-weight:700;color:#560591">assumptions map</strong> for each group, so we could test what we believed instead of building it into the design.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Assumptions map</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Per actor</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px"><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-ass1" src="https://framerusercontent.com/images/24bo5H1CshlpyU6nEp0DQQmhZg.jpg" shape="rect" placeholder="Assumptions map" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">ASSUMPTIONS MAP</figcaption></figure><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-ass2" src="https://framerusercontent.com/images/C49GGKSAfpKC7S5yf3nqLMVd2z8.jpg" shape="rect" placeholder="Assumptions map" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">ASSUMPTIONS MAP</figcaption></figure></div>
+          </div>
+        </article>
+        <article id="zc4-phase-3" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 03</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Research objectives</div>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Our questions became clear goals for each group.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Research questions</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Field research</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px"><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">FARMER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">How comfortable they are with phones, what happens after harvest, and what decides where they sell.</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">COMMISSION AGENT</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">How they manage operations and cash across many deals at once, and where paperwork slows them down.</p></div></div>
+          <blockquote data-r="" style="margin:0;padding:clamp(22px,3vw,34px);border-radius:20px;background:#560591;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.72)">THE FILTER</div><p style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a;color:#fff">Does this tell us something that changes a design decision?</p></blockquote>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px"><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-obj1" src="https://framerusercontent.com/images/C00Hn6QzBKeNnvEsVlZmD4H3Q.jpg" shape="rect" placeholder="Research objectives" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">RESEARCH OBJECTIVES</figcaption></figure><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-obj2" src="https://framerusercontent.com/images/ns6rJ7gitK654LSV3A8jhUsXjU.jpg" shape="rect" placeholder="Research objectives" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">RESEARCH OBJECTIVES</figcaption></figure></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px"><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-obj3" src="https://framerusercontent.com/images/Bjx29DJWAetMjL4E2sAhKYRE9p8.jpg" shape="rect" placeholder="Research" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">RESEARCH</figcaption></figure><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-obj4" src="https://framerusercontent.com/images/V76k86SNnBun7qfsNxRsX65XHU.jpg" shape="rect" placeholder="Research" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">RESEARCH</figcaption></figure></div>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#17151a;transform:translateZ(0)"><div data-rvid-ph="" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;transition:opacity .5s ease"><div style="width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);display:grid;place-items:center"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1.5v15l12.5-7.5z" fill="#fff"></path></svg></div><div style="font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:rgba(255,255,255,.8)">VIDEO — FIELD RESEARCH</div><div style="font:400 10px/1.4 'JetBrains Mono',monospace;color:rgba(255,255,255,.5)">assets/cs04/research-video-01.mp4</div></div><video data-rvid="" data-src="./assets/cs04/research-video-01.mp4" controls="" playsinline="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;background:#17151a"></video></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">FIELD RESEARCH</figcaption></figure>
+          </div>
+        </article>
+        <article id="zc4-phase-4" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 04</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Farmer profiles</div>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">We found two kinds of farmers, defined not by crop or region but by <strong style="font-weight:700;color:#560591">how they handle risk</strong>.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Personas</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Journey map</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px"><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">TRADITIONAL FARMER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Agrees a fixed price with a known trader before harvest.</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;background:#F3ECFA;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">MODERN FARMER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Weighs every sale: the farm gate when volumes are low, the mandi when it covers transport. Tracks prices and wants a tool to help.</p></div></div>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-farmer" src="https://framerusercontent.com/images/KAWIysdmTiIwu1teNfDOSA43KOg.jpg" shape="rect" placeholder="Farmer profiles" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">FARMER PROFILES</figcaption></figure>
+          <p data-r="" style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Both follow the same journey, from building a network to getting paid, and every step has room to improve.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Credibility scores</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Quality standardisation</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Market rate visibility</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Scheduled arrivals</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Payment tracking</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px"><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-fj1" src="https://framerusercontent.com/images/V0OriBYGlr9sbwZGMeBumL3M4qQ.jpg" shape="rect" placeholder="Farmer journey map" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">FARMER JOURNEY MAP</figcaption></figure><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-fj2" src="https://framerusercontent.com/images/jujavP0jFlOmU0pAjw3bptrOimo.jpg" shape="rect" placeholder="Farmer journey map" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">FARMER JOURNEY MAP</figcaption></figure></div>
+          </div>
+        </article>
+        <article id="zc4-phase-5" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 05</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Commission agent profiles</div>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Commission agents also split into two groups, defined by <strong style="font-weight:700;color:#560591">how they source produce</strong>.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Personas</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">Journey map</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px"><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">TRADITIONAL TRADER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Agrees deals with farmers before harvest and sells to whoever comes to the mandi.</p></div><div style="padding:clamp(22px,2.6vw,30px);border-radius:20px;background:#F3ECFA;display:flex;flex-direction:column;gap:12px"><div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">MODERN TRADER</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Takes orders from buyers first, then sources exactly what's needed.</p></div></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px"><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-ca1" src="https://framerusercontent.com/images/uH5Rb4vBtfh1mBeDeEMHexBJJ44.jpg" shape="rect" placeholder="Commission agent profiles" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">COMMISSION AGENT PROFILES</figcaption></figure><figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-ca2" src="https://framerusercontent.com/images/L93DqtOXk7srwuvv3OOPtyzzjU.jpg" shape="rect" placeholder="Commission agent profiles" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">COMMISSION AGENT PROFILES</figcaption></figure></div>
+          <p data-r="" style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">Both struggle at the same points: <strong style="font-weight:700;color:#560591">contracts</strong> are hard to enforce, <strong style="font-weight:700;color:#560591">procurement</strong> is stressful because quality varies and produce spoils, and <strong style="font-weight:700;color:#560591">payments</strong> are slow to collect.</p>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-caj" src="https://framerusercontent.com/images/4Qqbsl85YcJB1FJLyDet4yV4hXs.jpg" shape="rect" placeholder="Commission agent journey map" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">COMMISSION AGENT JOURNEY MAP</figcaption></figure>
+          </div>
+        </article>
+        <article id="zc4-phase-6" data-rphase="" style="display:flex;flex-direction:column;gap:24px;scroll-margin-top:110px;padding-top:32px;border-top:1px solid rgba(23,21,26,.12)">
+          <div data-r="" style="display:flex;flex-direction:column;gap:16px">
+            <div style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#560591">PHASE 06</div>
+            <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Service blueprint</div>
+            <p data-r="" style="margin:0;font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#560591">Service design before screen design.</p>
+            <p style="margin:0;max-width:62ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">With the profiles and journey maps in place, we mapped the whole service: <strong style="font-weight:700;color:#560591">16 stages across four phases</strong>.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">16 stages</span><span style="padding:7px 12px;border-radius:999px;background:#f5f3f7;color:rgba(23,21,26,.72);font:500 13px/1 'Karla',sans-serif">4 phases</span></div>
+          </div>
+          <div data-r="" data-d="1" style="display:flex;flex-direction:column;gap:20px">
+          <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px"><div style="padding:20px;border-radius:16px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:10px"><span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">PHASE 1</span><span style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Pre-Mandi</span></div><div style="padding:20px;border-radius:16px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:10px"><span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">PHASE 2</span><span style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Pre-Sales</span></div><div style="padding:20px;border-radius:16px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:10px"><span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">PHASE 3</span><span style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Selling</span></div><div style="padding:20px;border-radius:16px;border:1px solid rgba(23,21,26,.12);display:flex;flex-direction:column;gap:10px"><span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:#560591">PHASE 4</span><span style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">Post-Sale</span></div></div>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px;min-width:0"><div style="position:relative;aspect-ratio:1611/969;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-r-blueprint" src="https://framerusercontent.com/images/3W9F2r869N9uvboRFKCyTKwGs8.jpg" shape="rect" placeholder="Service blueprint — 16 stages across four phases" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div><figcaption style="font:500 11px/1.6 'JetBrains Mono',monospace;letter-spacing:.1em;color:rgba(23,21,26,.55)">SERVICE BLUEPRINT</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 The insight" style="padding:0 28px 120px">
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,88px);border-radius:20px;background:#560591;color:#fff;display:flex;flex-direction:column;gap:26px">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.72)">03 — THE INSIGHT</div>
+    <p data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.9vw,44px)/1.12 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:34ch;text-wrap:pretty">Farmers made selling decisions based on past relationships and trust, without exploring the wider market opportunities because they don't have access to pricing information and they find it difficult to trust a new trader.</p>
+  </div>
+</section>
+
+<section data-screen-label="04 What I designed" style="padding:0 28px 130px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">04 — WHAT I DESIGNED</div>
+      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:20ch">Key decisions I made</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(56px,7vw,96px)">
+      <div data-r="" style="display:flex;flex-wrap:wrap;flex-direction:row;gap:clamp(28px,5vw,80px);align-items:center">
+        <div style="flex:1.3 1 380px;min-width:0"><div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-screen-1" shape="rect" placeholder="Screen 01" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <div style="font:600 clamp(44px,4.6vw,72px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#560591">01</div>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">[Decision one, in a phrase]</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Why this, and what you rejected to get here. Placeholder.]</p>
+        </div>
+      </div>
+      <div data-r="" style="display:flex;flex-wrap:wrap;flex-direction:row-reverse;gap:clamp(28px,5vw,80px);align-items:center">
+        <div style="flex:1.3 1 380px;min-width:0"><div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-screen-2" shape="rect" placeholder="Screen 02" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <div style="font:600 clamp(44px,4.6vw,72px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#560591">02</div>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">[Decision two]</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Why this, and what you rejected to get here. Placeholder.]</p>
+        </div>
+      </div>
+      <div data-r="" style="display:flex;flex-wrap:wrap;flex-direction:row;gap:clamp(28px,5vw,80px);align-items:center">
+        <div style="flex:1.3 1 380px;min-width:0"><div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:rgba(23,21,26,.05);transform:translateZ(0)"><image-slot id="zc4-screen-3" shape="rect" placeholder="Screen 03" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div></div>
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <div style="font:600 clamp(44px,4.6vw,72px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#560591">03</div>
+          <div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">[Decision three]</div>
+          <p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">[Why this, and what you rejected to get here. Placeholder.]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section data-screen-label="06 Outcome" style="padding:0 28px 130px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">05 — OUTCOME</div>
+      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:20ch">Potential Impact</h2>
+    </div>
+    <div data-r="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 40px;align-items:end;padding-top:28px;border-top:1px solid rgba(23,21,26,.14)">
+      <div class="zc-num" data-to="30" data-suffix="%" style="font:600 clamp(56px,8vw,128px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em;color:#560591">0%</div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div style="font:700 clamp(19px,1.87vw,27px)/1.15 'Bricolage Grotesque',sans-serif;letter-spacing:-.025em;color:#17151a">potential income improvement</div><p style="margin:0;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">The <b>30%</b> figure was a <b>hypothesis made by the client</b>, based on giving farmers real-time market visibility and the ability to choose where to sell based on projected net profit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="07 My role" style="padding:0 28px 130px">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div data-r="" style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">07 — MY ROLE</div>
+      <h2 data-r="" data-d="1" style="margin:0;font:700 clamp(22px,2.38vw,36px)/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:20ch">What I owned.</h2>
+    </div>
+      <p data-r="" style="margin:0;grid-column:span 2;max-width:60ch;font:400 clamp(17px,1.5vw,21px)/1.6 'Karla',sans-serif;color:rgba(23,21,26,.8)">As the<b> only designer</b> on this project, I owned the <b>end to end user research process</b>, right from preparing the questionnaires and field visits and interviews to research synthesis and designing the final service concept. I was also responsible for <b>designing the final UX</b> of the multi user application.</p>
+    </div>
+  </div>
+</section>
+
+<nav data-screen-label="Prev / next" style="padding:0 28px 120px">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+    <a class="zc-jump" href="./ecoscope.html" style="display:flex;flex-direction:column;gap:16px;padding:32px;border-radius:20px;border:1px solid rgba(23,21,26,.12);color:#17151a;background:#fff" style-hover="border-color:#17151a;color:#17151a">
+      <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(23,21,26,.55)">← PREVIOUS · 03</span>
+      <span style="font:700 clamp(18px,1.9vw,26px)/1.14 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:24ch">Making biodiversity net gain legible</span>
+    </a>
+    <a class="zc-jump" href="./ops-buddy.html" style="display:flex;flex-direction:column;gap:16px;align-items:flex-end;text-align:right;padding:32px;border-radius:20px;background:#560591;color:#fff" style-hover="background:#17151a;color:#fff">
+      <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:rgba(255,255,255,.72)">NEXT · 01 →</span>
+      <span style="font:700 clamp(18px,1.9vw,26px)/1.14 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em;max-width:24ch">Cutting engineering tickets 22% across a 40-store pilot</span>
+    </a>
+  </div>
+</nav>
+
+<section id="contact" style="position:relative;background:#560591;color:#fff;padding:130px 34px 40px;overflow:hidden">
+  <div style="max-width:1400px;margin:0 auto">
+    <div data-r="" style="font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.16em;color:rgba(255,255,255,.68)">NEXT</div>
+    <h2 data-r="" data-d="1" style="margin:26px 0 0;font:600 clamp(32px,5.4vw,84px)/1.04 'Bricolage Grotesque','Montserrat',sans-serif;letter-spacing:-.035em;max-width:26ch">Let's <span class="zx-verb" style="display:inline-grid;vertical-align:baseline;overflow:hidden"><span style="grid-area:1/1;visibility:hidden">design</span></span><br>incredible products together</h2>
+    <div data-r="" data-d="2" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:52px">
+      <a href="mailto:shrida.sali96@gmail.com" style="padding:16px 28px;border-radius:999px;background:#fff;color:#2E0250;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="background:#faf9fb;color:#2E0250">Email me</a>
+      <a href="tel:+971562643337" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Call +971 56 264 3337</a>
+      <a href="https://www.linkedin.com/in/shrida-s-2ab60ab5/" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">LinkedIn</a>
+      <a href="https://www.behance.net/shridasali96" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Behance</a><a href="https://dribbble.com/salishrida" target="_blank" rel="noopener" style="padding:16px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.5);color:#fff;font:600 14px/1 var(--zb,'Karla'),'Montserrat',sans-serif" style-hover="border-color:#fff;background:rgba(255,255,255,.12);color:#fff">Dribbble</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;margin-top:110px;padding-top:26px;border-top:1px solid rgba(255,255,255,.28);font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,255,255,.7)">
+      <span>SHRIDA SALI — PORTFOLIO 2026</span><span>DUBAI, UAE · GMT+4</span>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    const q = (s) => Array.from(document.querySelectorAll(s));
+
+    q('.zx-resume').forEach((a) => a.addEventListener('click', (e) => {
+      if (!window.__openResume) return;
+      e.preventDefault(); window.__openResume();
+    }));
+
+    q('.zx-verb').forEach((host) => {
+      if (host.dataset.wired) return;
+      host.dataset.wired = '1';
+      const words = ['dream', 'design', 'build'];
+      const sizer = host.firstElementChild;
+      sizer.setAttribute('aria-hidden', 'true');
+      sizer.style.whiteSpace = 'nowrap';
+      const measure = (w) => { sizer.textContent = w; return sizer.getBoundingClientRect().width; };
+      host.style.transition = 'width 1.1s cubic-bezier(.4,0,.2,1) .12s';
+      let live = document.createElement('span');
+      live.textContent = words[0];
+      live.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap';
+      host.appendChild(live);
+      host.style.width = measure(words[0]) + 'px';
+      if (reduce) return;
+      let wi = 0;
+      this._verbTimer = setInterval(() => {
+        wi = (wi + 1) % words.length;
+        const next = document.createElement('span');
+        next.textContent = words[wi];
+        next.style.cssText = 'grid-area:1/1;display:block;white-space:nowrap;transform:translateY(105%);opacity:0;transition:transform .9s ' + ease + ', opacity .65s ease';
+        host.appendChild(next);
+        const out = live;
+        host.style.width = measure(words[wi]) + 'px';
+        requestAnimationFrame(() => {
+          next.style.transform = 'none'; next.style.opacity = '1';
+          out.style.transition = 'transform .9s ' + ease + ', opacity .65s ease';
+          out.style.transform = 'translateY(-105%)'; out.style.opacity = '0';
+        });
+        live = next;
+        setTimeout(() => out.remove(), 1100);
+      }, 3400);
+    });
+
+    const items = q('[data-r]');
+    if (!reduce) items.forEach((el) => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; });
+    const pending = new Set(reduce ? [] : items);
+    const reveal = (el) => {
+      if (!pending.has(el)) return;
+      pending.delete(el);
+      const d = parseFloat(el.getAttribute('data-d') || '0') * 0.09;
+      el.style.transition = 'opacity .8s ' + ease + ' ' + d + 's, transform .9s ' + ease + ' ' + d + 's';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    const runNum = (el) => {
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const to = parseFloat(el.dataset.to) || 0;
+      const pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+      if (reduce) { el.textContent = pre + to + suf; return; }
+      const t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / 1000);
+        el.textContent = pre + Math.round(to * (1 - Math.pow(1 - p, 3))) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const sweep = () => {
+      const h = innerHeight;
+      Array.from(pending).forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < h * 0.92 && r.bottom > 0) reveal(el); });
+      q('.zc-num').forEach((el) => { if (el.dataset.counted) return; const r = el.getBoundingClientRect(); if (r.top < h * 0.86 && r.bottom > 0) runNum(el); });
+    };
+
+    const head = document.getElementById('zc-head');
+    const bar = document.getElementById('zc-progress');
+    const heroImg = document.getElementById('zc-heroimg');
+    const onScroll = () => {
+      const y = scrollY || 0;
+      if (head) head.style.padding = y > 40 ? '13px 28px' : '22px 28px';
+      const doc = document.documentElement.scrollHeight - innerHeight;
+      if (bar) bar.style.width = (doc > 0 ? (y / doc) * 100 : 0) + '%';
+      if (heroImg && !reduce) {
+        const p = Math.min(1, y / innerHeight);
+        heroImg.style.transform = 'translateY(' + (p * 120) + 'px) scale(' + (1 + p * 0.06) + ')';
+      }
+      sweep();
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', sweep);
+    onScroll();
+    setTimeout(() => { Array.from(pending).forEach(reveal); q('.zc-num').forEach(runNum); }, 3000);
+
+    this.initCall();
+    this.initCursor();
+    if (!reduce) this.animateExtras();
+    this.initDecisionNav();
+    this.initResearch();
+  }
+
+  animateExtras() {
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    const pop = 'cubic-bezier(.34,1.5,.55,1)';
+    const q = (s) => Array.from(document.querySelectorAll(s));
+    const hero = document.getElementById('zc-heroimg');
+    const sheet = hero && hero.parentElement.nextElementSibling;
+
+    // 1. hero image settles, sheet slides up
+    if (hero) {
+      hero.style.opacity = '0';
+      hero.style.scale = '1.12';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        hero.style.transition = 'opacity 1s ease, scale 1.8s ' + ease;
+        hero.style.opacity = '1';
+        hero.style.scale = '1';
+      }));
+    }
+    if (sheet) {
+      sheet.style.transform = 'translateY(140px)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        sheet.style.transition = 'transform 1.3s ' + ease + ' .25s';
+        sheet.style.transform = 'none';
+      }));
+      setTimeout(() => { sheet.style.transform = ''; sheet.style.transition = ''; }, 1800);
+    }
+
+    // 2. headline words rise out of masks
+    const h1 = document.querySelector('#top h1');
+    if (h1 && !h1.dataset.split) {
+      h1.dataset.split = '1';
+      h1.removeAttribute('data-r');
+      h1.style.opacity = '1';
+      h1.style.transform = 'none';
+      h1.style.transition = 'none';
+      const words = [];
+      const wrap = (content) => {
+        const outer = document.createElement('span');
+        outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em';
+        const inner = document.createElement('span');
+        inner.style.cssText = 'display:inline-block;transform:translateY(110%)';
+        inner.appendChild(content);
+        outer.appendChild(inner);
+        words.push(inner);
+        return outer;
+      };
+      Array.from(h1.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(' '));
+            else frag.appendChild(wrap(document.createTextNode(part)));
+          });
+          h1.replaceChild(frag, n);
+        } else if (n.nodeType === 1) {
+          const ph = document.createComment('');
+          h1.replaceChild(ph, n);
+          h1.replaceChild(wrap(n), ph);
+        }
+      });
+      words.forEach((w, i) => {
+        setTimeout(() => {
+          w.style.transition = 'transform 1s ' + ease;
+          w.style.transform = 'none';
+        }, 650 + i * 70);
+      });
+    }
+
+    // scroll-sweep reveal with a timed safety net (no IntersectionObserver dependency)
+    const queue = [];
+    const io = (els, fn) => { els.forEach((el) => queue.push({ el, fn, done: false })); };
+    const run = (item) => { if (item.done) return; item.done = true; item.fn(item.el); };
+    const sweepX = () => {
+      const h = innerHeight;
+      queue.forEach((it) => {
+        if (it.done) return;
+        const r = it.el.getBoundingClientRect();
+        if (r.top < h * 0.9 && r.bottom > 0) run(it);
+      });
+    };
+    addEventListener('scroll', sweepX, { passive: true });
+    addEventListener('resize', sweepX);
+    requestAnimationFrame(sweepX);
+    this._extrasFallback = setTimeout(() => queue.forEach(run), 3200);
+
+    // 3. image frames wipe open from the bottom, image eases down to size
+    const frames = q('image-slot').map((s) => s.parentElement).filter((f) => f.id !== 'zc-heroimg');
+    frames.forEach((f) => {
+      f.style.clipPath = 'inset(100% 0 0 0 round 20px)';
+      const img = f.querySelector('image-slot');
+      if (img) img.style.transform = 'scale(1.15)';
+    });
+    io(frames, (f) => {
+      f.style.transition = 'clip-path 1.2s cubic-bezier(.76,0,.24,1)';
+      f.style.clipPath = 'inset(0 0 0 0 round 20px)';
+      const img = f.querySelector('image-slot');
+      if (img) {
+        img.style.transition = 'transform 1.6s ' + ease;
+        img.style.transform = 'none';
+        setTimeout(() => { img.style.transition = 'transform .8s ' + ease; }, 1700);
+        f.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.04)'; });
+        f.addEventListener('mouseleave', () => { img.style.transform = 'none'; });
+      }
+    }, 0.1);
+
+    // 4. rounded info boxes pop in, staggered within their row
+    const boxes = q('#dc-root div, #dc-root a.zc-jump').filter((el) => {
+      const cs = getComputedStyle(el);
+      return cs.borderTopLeftRadius === '20px' && !el.querySelector('image-slot') && !el.contains(h1) && el.id !== 'zc-heroimg' && el.offsetHeight < 400;
+    });
+    boxes.forEach((b) => { b.style.opacity = '0'; b.style.transform = 'translateY(40px) scale(.94)'; });
+    io(boxes, (b) => {
+      const i = Array.from(b.parentElement.children).indexOf(b);
+      const d = Math.max(0, i) * 0.09;
+      b.style.transition = 'opacity .5s ease ' + d + 's, transform .9s ' + pop + ' ' + d + 's';
+      b.style.opacity = '1';
+      b.style.transform = 'none';
+      setTimeout(() => {
+        b.style.transition = 'transform .4s ' + ease + ', box-shadow .4s ease';
+        b.addEventListener('mouseenter', () => { b.style.transform = 'translateY(-4px)'; b.style.boxShadow = '0 14px 30px rgba(23,21,26,.1)'; });
+        b.addEventListener('mouseleave', () => { b.style.transform = 'none'; b.style.boxShadow = 'none'; });
+      }, 1200 + d * 1000);
+    });
+
+    // 5. insight sentence lights up word by word as you scroll through it
+    const insight = document.querySelector('[data-screen-label="03 The insight"] p');
+    if (insight && !insight.dataset.split) {
+      insight.dataset.split = '1';
+      const parts = insight.textContent.split(/\s+/).filter(Boolean);
+      insight.textContent = '';
+      const spans = parts.map((w, i) => {
+        const s = document.createElement('span');
+        s.textContent = w;
+        s.style.cssText = 'opacity:.18;transition:opacity .25s linear';
+        insight.appendChild(s);
+        if (i < parts.length - 1) insight.appendChild(document.createTextNode(' '));
+        return s;
+      });
+      const scrub = () => {
+        const r = insight.getBoundingClientRect();
+        const p = Math.max(0, Math.min(1, (innerHeight * 0.85 - r.top) / (innerHeight * 0.5)));
+        const lit = Math.round(p * spans.length);
+        spans.forEach((s, i) => { s.style.opacity = i < lit ? '1' : '.18'; });
+      };
+      addEventListener('scroll', scrub, { passive: true });
+      scrub();
+    }
+
+    // 6. section eyebrows get a short purple rule that draws in
+    q('section div[data-r]').filter((el) => /^\d\d — /.test(el.textContent.trim())).forEach((el) => {
+      if (el.querySelector('.zc-rule')) return;
+      const line = document.createElement('span');
+      line.className = 'zc-rule';
+      line.style.cssText = 'display:block;width:28px;height:2px;margin-top:12px;background:#560591;transform:scaleX(0);transform-origin:left center';
+      el.appendChild(line);
+      io([el], () => setTimeout(() => { line.style.transition = 'transform .9s ' + ease; line.style.transform = 'scaleX(1)'; }, 250));
+    });
+  }
+
+  initResearch() {
+    const items = Array.from(document.querySelectorAll('[data-rnav]'));
+    const phases = items.map((it) => document.getElementById(it.getAttribute('data-rnav')));
+    const rail = document.querySelector('[data-rrail]');
+    const content = document.querySelector('[data-rcontent]');
+    const paint = () => {
+      if (rail && content) rail.style.position = rail.getBoundingClientRect().right <= content.getBoundingClientRect().left + 1 ? 'sticky' : 'static';
+      const mid = innerHeight * 0.45;
+      let act = 0;
+      phases.forEach((p, i) => { if (p && p.getBoundingClientRect().top < mid) act = i; });
+      items.forEach((it, i) => {
+        const on = i === act;
+        it.style.color = on ? '#17151a' : 'rgba(23,21,26,.38)';
+        const d = it.querySelector('[data-rdot]');
+        if (d) d.style.transform = on ? 'scale(1)' : 'scale(0)';
+      });
+    };
+    if (items.length) {
+      this._rPaint = paint;
+      addEventListener('scroll', paint, { passive: true });
+      addEventListener('resize', paint);
+      paint();
+      items.forEach((it, i) => it.addEventListener('click', (e) => {
+        const p = phases[i]; if (!p) return;
+        e.preventDefault();
+        window.scrollTo({ top: p.getBoundingClientRect().top + scrollY - 100, behavior: 'smooth' });
+      }));
+    }
+    document.querySelectorAll('video[data-rvid]').forEach((v) => {
+      const src = v.getAttribute('data-src');
+      if (!src || v.dataset.inited) return;
+      v.dataset.inited = '1';
+      const ph = v.parentElement.querySelector('[data-rvid-ph]');
+      fetch(src, { method: 'HEAD' }).then((r) => {
+        if (!r.ok) return;
+        v.addEventListener('loadeddata', () => { v.style.opacity = '1'; if (ph) ph.style.opacity = '0'; ph && (ph.style.pointerEvents = 'none'); }, { once: true });
+        v.src = src;
+      }).catch(() => {});
+    });
+  }
+
+  initDecisionNav() {
+    const items = Array.from(document.querySelectorAll('[data-dec-nav]'));
+    if (!items.length) return;
+    const blocks = items.map((it) => document.getElementById(it.getAttribute('data-dec-nav')));
+    const navEl = document.getElementById('zc3-decnav');
+    const content = document.getElementById('zc3-deccontent');
+    const paint = () => {
+      if (navEl && content) {
+        const side = navEl.getBoundingClientRect().right <= content.getBoundingClientRect().left + 1;
+        navEl.style.position = side ? 'sticky' : 'static';
+      }
+      const mid = innerHeight * 0.5;
+      let act = 0;
+      blocks.forEach((b, i) => { if (b && b.getBoundingClientRect().top < mid) act = i; });
+      items.forEach((it, i) => {
+        const on = i === act;
+        it.style.color = on ? '#17151a' : 'rgba(23,21,26,.38)';
+        const dot = it.querySelector('[data-dot]');
+        if (dot) dot.style.transform = on ? 'scale(1)' : 'scale(0)';
+      });
+    };
+    addEventListener('scroll', paint, { passive: true });
+    addEventListener('resize', paint);
+    paint();
+    items.forEach((it, i) => it.addEventListener('click', (e) => {
+      const b = blocks[i];
+      if (!b) return;
+      e.preventDefault();
+      window.scrollTo({ top: b.getBoundingClientRect().top + scrollY - 110, behavior: 'smooth' });
+    }));
+  }
+
+  initCall() {
+    const isPhone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || matchMedia('(pointer:coarse)').matches;
+    document.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+      if (a.dataset.callWired) return;
+      a.dataset.callWired = '1';
+      if (isPhone) return;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const num = a.getAttribute('href').replace('tel:', '');
+        const orig = a.dataset.orig || a.textContent;
+        a.dataset.orig = orig;
+        const done = () => { a.textContent = 'Number copied \u2713'; clearTimeout(a._t); a._t = setTimeout(() => { a.textContent = orig; }, 2200); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(num).then(done, () => { location.href = 'tel:' + num; });
+        else location.href = 'tel:' + num;
+      });
+    });
+  }
+
+  initCursor() {
+    if (this._cursorOn) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const root = document.getElementById('zx-cur');
+    const body = document.getElementById('zx-cur-body');
+    const txt = document.getElementById('zx-cur-text');
+    const caret = document.getElementById('zx-cur-caret');
+    const dot = document.getElementById('zx-cur-dot');
+    if (!root || !body || !txt || !caret || !dot) return;
+    this._cursorOn = true;
+    if (body.parentElement !== root) root.appendChild(body);
+    if (dot.parentElement !== root) root.appendChild(dot);
+    if (root.parentElement !== document.body) document.body.appendChild(root);
+    [root, body, dot].forEach((el) => { el.style.left = '0px'; el.style.top = '0px'; el.style.right = ''; el.style.bottom = ''; el.style.translate = ''; });
+    root.style.position = 'fixed';
+    dot.style.left = '0px';
+    const on = () => { document.documentElement.classList.add('zx-on'); root.style.opacity = '1'; };
+    const off = () => { document.documentElement.classList.remove('zx-on'); root.style.opacity = '0'; };
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
+    let pill = false, label = '', typeT = null, down = false, dark = false;
+    const PURPLE = '#560591';
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; if (!px || !py) { px = mx; py = my; } on(); });
+    document.documentElement.addEventListener('mouseout', (e) => { if (!e.relatedTarget) off(); });
+    addEventListener('blur', off);
+    addEventListener('pagehide', off);
+    addEventListener('mousedown', () => { down = true; });
+    addEventListener('mouseup', () => { down = false; });
+    const isDark = (el) => {
+      for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+        const c = getComputedStyle(n).backgroundColor;
+        const m = c && c.match(/rgba?\(([^)]+)\)/);
+        if (!m) continue;
+        const p = m[1].split(',').map(parseFloat);
+        if (p.length === 4 && p[3] < 0.5) continue;
+        return (0.2126 * p[0] + 0.7152 * p[1] + 0.0722 * p[2]) / 255 < 0.42;
+      }
+      return false;
+    };
+    const labelFor = (a) => {
+      if (a.dataset && a.dataset.cursor) return a.dataset.cursor;
+      if (a.matches('.zp-tile,.zw-card,.zc-jump')) return 'READ CASE';
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('mailto:')) return 'SAY HI';
+      if (href.startsWith('tel:')) return 'CALL';
+      if (/\.pdf($|\?)/i.test(href)) return 'RESUME \u2193';
+      if (/^https?:/i.test(href)) return 'OPEN \u2197';
+      if (href.startsWith('#')) return 'JUMP';
+      if (a.tagName === 'BUTTON') return 'CLICK';
+      return 'GO \u2192';
+    };
+    const type = (s) => {
+      if (s === label) return;
+      label = s;
+      clearInterval(typeT);
+      if (!s) { txt.textContent = ''; return; }
+      if (reduce) { txt.textContent = s; return; }
+      let i = 0; txt.textContent = '';
+      typeT = setInterval(() => { i++; txt.textContent = s.slice(0, i); if (i >= s.length) clearInterval(typeT); }, 34);
+    };
+    const paint = () => {
+      const ink = dark ? '#fff' : PURPLE;
+      body.style.opacity = pill ? '1' : '0';
+      body.style.background = ink;
+      txt.style.color = dark ? PURPLE : '#fff';
+      caret.style.background = dark ? PURPLE : '#fff';
+      const s = pill ? 14 : 10;
+      dot.style.width = s + 'px'; dot.style.height = s + 'px'; dot.style.margin = (-s / 2) + 'px 0 0 ' + (-s / 2) + 'px';
+      dot.style.background = ink;
+      const edge = dark ? PURPLE : '#fff';
+      dot.style.boxShadow = '0 0 0 2px ' + edge + ', 0 1px 6px rgba(23,21,26,.35)' + (pill ? ', 0 0 0 6px ' + (dark ? 'rgba(255,255,255,.3)' : 'rgba(86,5,145,.2)') : '');
+    };
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target;
+      if (!t || !t.closest) return;
+      dark = isDark(t);
+      const a = t.closest('a,button,.zp-tile,.zw-card,[data-cursor]');
+      pill = !!a;
+      type(a ? labelFor(a) : '');
+      paint();
+    });
+    paint();
+    const loop = (now) => {
+      px += (mx - px) * (reduce ? 1 : 0.2); py += (my - py) * (reduce ? 1 : 0.2);
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) scale(' + (down ? 0.7 : 1) + ')';
+      body.style.transform = 'translate(' + (px + 16) + 'px,' + (py + 14) + 'px) scale(' + (pill ? (down ? 0.92 : 1) : 0.7) + ')';
+      caret.style.opacity = Math.floor(now / 530) % 2 === 1 && txt.textContent === label ? '0' : '1';
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._verbTimer);
+    cancelAnimationFrame(this._raf);
+    clearTimeout(this._extrasFallback);
+  }
+}
+</script>
+</body>
+</html>
